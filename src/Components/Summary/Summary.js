@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import instance from '../Api/Api'
+import {instance} from '../Api/Api'
 
 function Summary() {
     const [date,setDate] = useState('')
@@ -28,8 +28,6 @@ function Summary() {
             setChangeCriticals(dataArray[0].change_criticals)
             setChangeFatalities(dataArray[0].change_fatalities)
             setChangeRecoveries(dataArray[0].change_recoveries)
-
-
         }
     
         fetchData()
