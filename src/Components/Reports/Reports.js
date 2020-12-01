@@ -8,9 +8,9 @@ function Reports() {
 
         const fetchData = async()=>{
             const response = await reportInstance.get('./reports')
-            console.log(response.data);
+            // console.log(response.data);
 
-            console.log(response.data.data);
+            // console.log(response.data.data);
         }
 
         fetchData()

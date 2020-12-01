@@ -12,23 +12,27 @@ const reportInstance = axios.create({
         } 
 })
 
-// const provinces = {
-//         {NL},
-//         {PE},
-//         {NS},
-//         {NB},
-//         {ON},
-//         {QC}, 
-//         {MB}, 
-//         {AB},
-//         {BC}, 
-//         {SK}, 
-//         {YT},
-//         {NT}, 
-//         {NU}
-// }
+// List of Country and Provinces
+const provinces = [
+        {Code:"AB", Name: "Alberta"},
+        {Code:"BC", Name: "British Columbia"}, 
+        {Code:"MB", Name: "Manitoba"}, 
+        {Code:"NB", Name:"New Brunswich"},
+        {Code:"NL", Name: "Newfoundland and Labrador"},
+        {Code:"NS", Name: "Nova Scotia"},
+        {Code:"NT", Name: "Northwest Territories"}, 
+        {Code:"NU", Name: "Nunavat"},
+        {Code:"ON", Name: "Ontario"},
+        {Code:"PE", Name: "Prince Edward Island"},
+        {Code:"QC", Name: "Quebec"}, 
+        {Code:"SK", Name: "Saskatchewan"}, 
+        {Code:"YT", Name: "Yukon"}
+]
+// MAPBOX KEY
 
-export {instance, reportInstance}
+const mapboxKey = "pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw"
+
+export {instance, reportInstance, mapboxKey, provinces}
 
 
 // PROVINCE CODES
