@@ -7,25 +7,27 @@ import {mapboxKey} from '../Api/Api'
 
 import ReactMapGL from 'react-map-gl'
 
+// latitude: 56.130367,
+// longitude: -106.346771,
+
 function CovidMap() {
     const [viewport, setViewport] = useState({
-        latitude: 56.130367,
-        longitude: -106.346771,
-        zoom: 2,
+        latitude: 58.859224,
+        longitude: -96.260852,
+        zoom: 3,
         width:"100%",
         height:"60vh"
     })
 
 
     return (
-        <div>
+        <React.Fragment>
             <ReactMapGL 
                 {...viewport} 
                 mapboxApiAccessToken={mapboxKey}
                 onViewportChange={(viewport)=>setViewport(viewport)}
-                mapStyle="mapbox://styles/cg709/cki5nad1m2r4b19qnk5tiva6g"></ReactMapGL>
-            
-        </div>
+                mapStyle="mapbox://styles/cg709/cki6bfur32hye19o47s7r367b"></ReactMapGL>
+        </React.Fragment>
     )
 }
 

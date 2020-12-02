@@ -17,7 +17,7 @@ const provinces = [
         {Code:"AB", Name: "Alberta"},
         {Code:"BC", Name: "British Columbia"}, 
         {Code:"MB", Name: "Manitoba"}, 
-        {Code:"NB", Name:"New Brunswich"},
+        {Code:"NB", Name:"New Brunswick"},
         {Code:"NL", Name: "Newfoundland and Labrador"},
         {Code:"NS", Name: "Nova Scotia"},
         {Code:"NT", Name: "Northwest Territories"}, 

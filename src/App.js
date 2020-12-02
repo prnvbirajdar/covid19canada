@@ -1,17 +1,23 @@
 // import './App.css';
 import Summary from './Components/Summary/Summary'
-import CovidMap from './Components/CovidMap/CovidMap'
-import Reports from './Components/Reports/Reports'
+import Provinces from './Components/Provinces/Provinces'
 import Nav from './Components/Nav/Nav'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Footer from './Components/Footer/Footer'
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <Nav/>
-      <Summary/>
-      <CovidMap/>
-      <Reports/>
+        <Nav/>
+        <Switch>
+        <Route exact path="/" component={Summary}/>
+        <Route path="/provinces" component={Provinces}/>
+        </Switch>
+        <Footer/>
     </div>
+    </Router>
+
   );
 }
 

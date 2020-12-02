@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {instance} from '../Api/Api'
+import CovidMap from '../CovidMap/CovidMap'
 
 function Summary() {
     const [date,setDate] = useState('')
@@ -42,6 +43,7 @@ function Summary() {
             <p>Total Critical Cases: {totalCriticals} <span>⬆️ {changeCriticals}</span></p>
             <p>Total Recoveries: {totalRecoveries} <span>⬆️ {changeRecoveries}</span></p>
             <p>Total Fatalities: {totalFatalities} <span>⬆️ {changeFatalities}</span></p>
+            <CovidMap/>
        </div>
     )
 }

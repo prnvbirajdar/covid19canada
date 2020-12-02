@@ -3,24 +3,36 @@ import React, {useState} from 'react'
 import { Menu, Dropdown} from 'semantic-ui-react'
 import {provinces} from '../Api/Api'
 import './nav.css'
+import {Link} from 'react-router-dom'
 
 function Nav() {
 
+    const [data] = useState(provinces)
+
+    const dropdownOptions = data.map((province)=>({
+        key: province.Code,
+        text: province.Name,
+        value: province.Code
+    }))
     
-
-    const dropdownOptions = provinces.map((p)=><p className="nav__options" key={p.i}>{p.Name}</p>)
-    const dropdownCode = provinces.map((p)=><div className="nav__options" key={p.i}>{p.Code}</div>)
-
     return (
-        <Menu stackable>
+        <Menu stackable inverted>
             <Menu.Item>
-                <img alt="logo"/>
+                <Link to='/'>  
+                    <i class="fas fa-shield-virus" style={{fontSize:'3rem'}}></i> 
+                </Link>         
             </Menu.Item>
 
-            <Menu.Item
-            name='features'>
-                <Dropdown className="nav__dropdown" value={dropdownCode} placeholder="Canada" search selection options={dropdownOptions} />
-            </Menu.Item>
+            <Menu.Item position='right'>
+                    <Dropdown 
+                        className="nav__dropdown" 
+                        placeholder="Canada" 
+                        search 
+                        selection 
+                        options={dropdownOptions}
+                        onChange={()=>console.log(dropdownOptions.map(m=>m.value))}
+                        />
+            </Menu.Item>         
       </Menu>
     )
 }
