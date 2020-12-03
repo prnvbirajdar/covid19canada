@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 
 function TotalCases({report}) {
 
-
     const date = report.map(d=>d.date)
     const total = report.map(t=>t.total_cases)
     const tests = report.map(t=>t.total_tests)
@@ -11,9 +10,11 @@ function TotalCases({report}) {
     const fatalities = report.map(t=>t.total_fatalities)
     const criticals = report.map(t=>t.total_critical)
     const hospitalizations = report.map(t=>t.total_hospitalizations)
+    const active =  report.map(t=>(t.total_cases - t.total_recoveries - t.total_fatalities))
+    
+    // total - fatalities - recoveries 
 
-    console.log(date);
-
+    console.log(active);
 
 //     change_cases: null
 // change_criticals: 0
@@ -46,36 +47,44 @@ function TotalCases({report}) {
                     labels: date,
                     datasets:[
                     {
-                        label:'Total Cases',
+                        label:'Cases',
                         data: total,
-                        backgroundColor:'rgba(39, 39, 223, 0.664)',
+                        backgroundColor:'rgba(39, 39, 223, 0.35)',
                         borderWidth: 2,
                         borderColor:'blue',
                         pointRadius:0
                     },{                         
-                        label:'Total Hospitalizations',
-                        data: hospitalizations,
-                        backgroundColor:"rgba(230, 166, 47, 0.664)",
-                        borderWidth: 2,
-                        borderColor:'orange',
-                        pointRadius:0,
-                        hidden: true,
-                    },{                         
-                        label:'Total Fatalities',
+                        label:'Deaths',
                         data: fatalities,
-                        backgroundColor:'rgba(222, 79, 79, 0.582)',
+                        backgroundColor:'rgba(222, 79, 79, 0.35)',
                         borderWidth: 2,
                         borderColor:'red',
                         pointRadius:0,
                         hidden: true
                     },{                         
-                        label:'Total Recoveries ',
+                        label:'Recoveries ',
                         data: recoveries,
-                        backgroundColor:'rgba(36, 219, 36, 0.61)',
+                        backgroundColor:'rgba(36, 219, 36, 0.35)',
                         borderWidth: 2,
                         borderColor:'green',
                         pointRadius:0,
                         hidden: true
+                    },{
+                        label:'Active',
+                        data: active,
+                        backgroundColor:'rgba(214, 42, 214,0.35)',
+                        borderWidth: 2,
+                        borderColor:'purple',
+                        pointRadius:0,
+                        hidden: true,
+                    },{                         
+                        label:'Hospitalizations',
+                        data: hospitalizations,
+                        backgroundColor:"rgba(230, 166, 47,0.354)",
+                        borderWidth: 2,
+                        borderColor:'orange',
+                        pointRadius:0,
+                        hidden: true,
                     },
                 ] 
                 }} 

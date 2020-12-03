@@ -6,10 +6,7 @@ const instance = axios.create({
 })
 
 const reportInstance = axios.create({
-    baseURL:"https://api.covid19tracker.ca",
-        params: {
-            fill_dates:true,
-        } 
+    baseURL:"https://api.covid19tracker.ca" 
 })
 
 // List of Country and Provinces

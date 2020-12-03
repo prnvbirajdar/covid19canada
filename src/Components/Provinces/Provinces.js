@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import ProvinceHeader from './ProvinceHeader/ProvinceHeader'
-import TotalCharts from '../../Containers/Charts/TotalCharts'
-import {reportInstance} from '../Api/Api'
+import TotalChart from '../../Containers/Charts/TotalChart'
+import DailyChart from '../../Containers/Charts/DailyChart'
+import {instance} from '../Api/Api'
 
 function Reports({match}) {
     const [report, setReport] = useState([])
@@ -9,7 +10,7 @@ function Reports({match}) {
 
     useEffect(()=>{
         const fetchData = async()=>{
-            const response = await reportInstance.get(`/reports${match.url}`)
+            const response = await instance.get(`/reports${match.url}`)
                 .catch(err=>console.log(`province error: ${err}`))
             setReport(response.data.data)
 
@@ -24,7 +25,8 @@ function Reports({match}) {
         
        <div>
             <ProvinceHeader latestReport={latestReport}/>
-            <TotalCharts report={report}/>
+            <TotalChart report={report}/>
+            <DailyChart report={report}/>
        </div> 
     )
 }
