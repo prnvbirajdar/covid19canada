@@ -1,8 +1,12 @@
-.nav__options{
-    text-align: left;
-    margin-left: 0.7em;
+.nav__options {
+  text-align: left;
+  margin-left: 0.7em;
 }
 
-.nav__dropdown{
-    width: 50%;
+.nav__dropdown {
+  width: 50%;
+}
+
+* {
+  color: inherit;
 }

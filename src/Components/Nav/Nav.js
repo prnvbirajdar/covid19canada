@@ -1,38 +1,47 @@
 import { imageOverlay } from 'leaflet'
 import React, {useState} from 'react'
-import { Menu, Dropdown} from 'semantic-ui-react'
-import {provinces} from '../Api/Api'
+import { Menu, Dropdown, MenuItem} from 'semantic-ui-react'
 import './nav.css'
 import {Link} from 'react-router-dom'
+// import {provinces} from '../Api/Api'
 
-function Nav() {
+function Nav({provinces}) {
 
     const [data] = useState(provinces)
 
-    const dropdownOptions = data.map((province)=>({
+    // const [value, setValue] = useState('')
+
+    const dropdownOptions = provinces.map((province)=>({
         key: province.Code,
         text: province.Name,
         value: province.Code
     }))
-    
+
+
     return (
-        <Menu stackable inverted>
+        <Menu>
             <Menu.Item>
-                <Link to='/'>  
+                <Link to='/'> 
                     <i class="fas fa-shield-virus" style={{fontSize:'3rem'}}></i> 
                 </Link>         
             </Menu.Item>
 
-            <Menu.Item position='right'>
-                    <Dropdown 
-                        className="nav__dropdown" 
-                        placeholder="Canada" 
-                        search 
-                        selection 
-                        options={dropdownOptions}
-                        onChange={()=>console.log(dropdownOptions.map(m=>m.value))}
-                        />
-            </Menu.Item>         
+            
+           
+                <Dropdown  placeholder="Select Province" className='link item' style={{paddingRight:"5rem"}}>
+                    <Dropdown.Menu>
+                    {data.map(province=>{
+                        return (
+                            <Dropdown.Item  key={province.Code} value={province.Code}>
+                                <Link to={`/province/${province.Code}`}>
+                                    <p>{province.Name}</p>
+                                </Link>
+                            </Dropdown.Item>
+                        )
+                    })}
+                    </Dropdown.Menu>
+                </Dropdown>
+           
       </Menu>
     )
 }
