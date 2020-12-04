@@ -13,7 +13,6 @@ function TotalCases({report}) {
        report === [] || total === [] || recoveries === [] || fatalities === [] || hospitalizations === [] ? null :
 
         <div>
-            chart
             <Line 
                 height={200}
                 width={300}
