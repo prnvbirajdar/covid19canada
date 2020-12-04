@@ -1,19 +1,30 @@
 import React, {useState, useEffect} from 'react'
 import {instance} from '../Api/Api'
 import CovidMap from '../CovidMap/CovidMap'
+import TotalChart from '../../Containers/Charts/TotalChart'
+import DailyChart from '../../Containers/Charts/DailyChart'
 
 function Summary() {
     const [data,setData] = useState({})
     const [date,setDate] = useState('')
 
+    const [report, setReport] = useState([])
+
     const fetchData = async ()=>{
         const response = await instance.get('/summary')
             .catch(err=>console.log(`summary error: ${err}`))
-        const dataArray = await response.data.data
+        const dataArray = response.data.data
+
+
+        const res = await instance.get(`/reports`)
+            .catch(err=>console.log(`province error: ${err}`))
+
+        setReport(res.data.data)
 
         setData(dataArray[0])
         setDate(response.data.last_updated)
 
+        return{ response, res}
     }
 
     useEffect (()=>{
@@ -29,6 +40,8 @@ function Summary() {
                 <p>Total Recoveries: {data.total_recoveries} <span>⬆️ {data.change_recoveries}</span></p>
                 <p>Total Fatalities: {data.total_fatalities} <span>⬆️ {data.change_fatalities}</span></p>
                 <CovidMap/>
+                <TotalChart report={report}/>
+                <DailyChart report={report}/>
             </div>
     )
 }

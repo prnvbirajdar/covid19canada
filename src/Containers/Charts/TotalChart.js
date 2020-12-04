@@ -1,42 +1,16 @@
 import React from 'react'
-import { Line } from 'react-chartjs-2';
+import { Line} from 'react-chartjs-2';
 
 function TotalCases({report}) {
 
     const date = report.map(d=>d.date)
-    const total = report.map(t=>t.total_cases)
-    const tests = report.map(t=>t.total_tests)
-    const recoveries = report.map(t=>t.total_recoveries)
-    const fatalities = report.map(t=>t.total_fatalities)
-    const criticals = report.map(t=>t.total_critical)
-    const hospitalizations = report.map(t=>t.total_hospitalizations)
-    const active =  report.map(t=>(t.total_cases - t.total_recoveries - t.total_fatalities))
-    
-    // total - fatalities - recoveries 
-
-    console.log(active);
-
-//     change_cases: null
-// change_criticals: 0
-// change_fatalities: null
-// change_hospitalizations: 0
-// change_recoveries: 0
-// change_tests: 0
-// change_vaccinations: null
-// date: "2020-01-25"
-// total_cases: 0
-// total_criticals: 0
-// total_fatalities: 0
-// total_hospitalizations: 0
-// total_recoveries: 0
-// total_tests: 0
-
-
-
-
+    const total = report.map(t=> t.total_cases === null ? 0 : t.total_cases)
+    const recoveries = report.map(t=> t.total_recoveries === null ? 0 : t.total_recoveries)
+    const fatalities = report.map(t=> t.total_fatalities === null ? 0 : t.total_fatalities)
+    const hospitalizations = report.map(t=> t.total_hospitalizations === null ? 0 : t.total_hospitalizations)
 
     return (
-       report === [] || total === [] || recoveries === [] || criticals === [] || fatalities === [] || hospitalizations === [] || tests === []  ? null :
+       report === [] || total === [] || recoveries === [] || fatalities === [] || hospitalizations === [] ? null :
 
         <div>
             chart
@@ -69,14 +43,6 @@ function TotalCases({report}) {
                         borderColor:'green',
                         pointRadius:0,
                         hidden: true
-                    },{
-                        label:'Active',
-                        data: active,
-                        backgroundColor:'rgba(214, 42, 214,0.35)',
-                        borderWidth: 2,
-                        borderColor:'purple',
-                        pointRadius:0,
-                        hidden: true,
                     },{                         
                         label:'Hospitalizations',
                         data: hospitalizations,
@@ -101,7 +67,7 @@ function TotalCases({report}) {
                           type: 'time',
                           time: {
                             displayFormats: {
-                              'month': 'MMM YY'
+                              month: 'MM YY'
                             }
                           },
                           ticks:{
@@ -115,7 +81,7 @@ function TotalCases({report}) {
                         yAxes: [{
                             ticks:{
                                 beginAtZero: true,
-                                maxTicksLimit:7
+                                maxTicksLimit:7,
                             }
                         }],
                     },
@@ -134,10 +100,3 @@ export default TotalCases
 
 
 
-
-
-// {
-//     label:'total tests',
-//     data: tests,
-//     backgroundColor:'purple',
-//  },

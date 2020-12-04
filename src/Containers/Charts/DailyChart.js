@@ -5,37 +5,13 @@ function DailyCases({report}) {
 
 
     const date = report.map(d=>d.date)
-    const total = report.map(t=>t.change_cases)
-    const tests = report.map(t=>t.change_tests)
-    const recoveries = report.map(t=>t.change_recoveries)
-    const fatalities = report.map(t=>t.change_fatalities)
-    const criticals = report.map(t=>t.change_critical)
-    const hospitalizations = report.map(t=>t.change_hospitalizations)
-    const active =  report.map(t=>(t.change_cases - t.change_recoveries - t.change_fatalities))
-
-console.log(total);
-
-//     change_cases: null
-// change_criticals: 0
-// change_fatalities: null
-// change_hospitalizations: 0
-// change_recoveries: 0
-// change_tests: 0
-// change_vaccinations: null
-// date: "2020-01-25"
-// total_cases: 0
-// total_criticals: 0
-// total_fatalities: 0
-// total_hospitalizations: 0
-// total_recoveries: 0
-// total_tests: 0
-
-
-
-
+    const total = report.map(t=> t.change_cases === null ? 0 : t.change_cases)
+    const recoveries = report.map(t=> t.change_recoveries === null ? 0 : t.change_recoveries)
+    const fatalities = report.map(t=> t.change_fatalities === null ? 0 : t.change_fatalities)
+    const hospitalizations = report.map(t=> t.change_hospitalizations === null ? 0 : t.change_hospitalizations)
 
     return (
-       report === [] || total === [] || recoveries === [] || criticals === [] || fatalities === [] || hospitalizations === [] || tests === []  ? null :
+       report === [] || total === [] || recoveries === [] || fatalities === [] || hospitalizations === [] ? null :
 
         <div>
             chart
@@ -66,14 +42,6 @@ console.log(total);
                         borderColor:'green',
                         pointRadius:0,
                         hidden: true
-                    },{
-                        label:'Active',
-                        data: active,
-                        backgroundColor:'rgba(214, 42, 214, 0.35)',
-                        borderWidth: 2,
-                        borderColor:'purple',
-                        pointRadius:0,
-                        hidden: true,
                     },{                         
                         label:'Hospitalizations',
                         data: hospitalizations,
@@ -113,6 +81,7 @@ console.log(total);
                             ticks:{
                                 beginAtZero: true,
                                 maxTicksLimit:7,
+                                min: 0,
                                 suggestedMin: 0
                             }
                         }],
@@ -125,13 +94,3 @@ console.log(total);
 }
 
 export default DailyCases
-
-
-
-
-
-// {
-//     label:'total tests',
-//     data: tests,
-//     backgroundColor:'purple',
-//  },
