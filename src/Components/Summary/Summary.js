@@ -4,15 +4,18 @@ import CovidMap from '../CovidMap/CovidMap'
 import TotalChart from '../../Containers/Charts/TotalChart'
 import DailyChart from '../../Containers/Charts/DailyChart'
 import DoughChart from '../../Containers/Charts/DoughChart'
+import Table from '../../Containers/Table/Table'
 
 
 function Summary() {
+    //state for summary
     const [data,setData] = useState({})
     const [date,setDate] = useState('')
-
+    //state for provincial reports
     const [report, setReport] = useState([])
-
+    //state for tables, doughchart and maps
     const [provinceData, setProvinceData] = useState([])
+    const [basicData, setBasicData] =useState([])
 
     const fetchData = async ()=>{
         //api call to get the main data
@@ -26,13 +29,12 @@ function Summary() {
         //api call to get the data for the doughnut graph, map data and table
         //provinceURL goes over all the province array and give a promise containing urls for each province
         const provinceURL = provinces.map(p => instance.get(`/reports/province/${p.Code}`))
-
-        
-        //await instance.get(`/reports/province/${provinces.map(p=>p.Code)}`)
         
         //resp resolves the promise and gives the array data for each province
         const resp = await Promise.all(provinceURL)
             .catch(err=>console.log(`province data error: ${err}`))
+
+        setBasicData(resp)
 
         // const albertaData = resp[0].data.data
         // console.log(albertaData);
@@ -44,7 +46,12 @@ function Summary() {
             for (let i = 0; i < resp.length; i++) {
                 const provData = resp[i].data.data;
                 const provName = resp[i].data.province
+                
+                // console.log(provName , provData);
+
+
                 setProvinceData(provData)
+
             }
         // }
 
@@ -68,10 +75,7 @@ function Summary() {
         fetchData()
     },[])
 
-    const latestData = provinceData[provinceData.length - 1]
-
-    console.log(latestData);
-
+  
     
     return (
         data && report && date && provinceData &&
@@ -85,6 +89,7 @@ function Summary() {
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>
                 <DoughChart/>
+                <Table provinces={provinces} data={provinceData} basicData={basicData}/>
             </div>
     )
 }
