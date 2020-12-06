@@ -36,9 +36,6 @@ function Summary() {
 
         setBasicData(resp)
 
-        // const albertaData = resp[0].data.data
-        // console.log(albertaData);
-
         // if(!resp){
         //     return null
         // } else {
