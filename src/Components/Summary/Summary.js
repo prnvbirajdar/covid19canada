@@ -60,7 +60,6 @@ function Summary() {
         setReport(res.data.data)
         setData(response.data.data[0])
         setDate(response.data.last_updated)
-        // setProvinceData(provData)
 
         return { response, res, resp}
     }
