@@ -13,6 +13,29 @@ function DoughChart({basicData}) {
       //add name of the provinces to every lastData object, so it's easier to map
       const newData = lastData.map((e,i)=>e['name'] = (provinces[i].Name))
 
+      // const compare = (a,b)=>{
+      //   const totalA = a.total_cases
+      //   const totalB = b.total_cases
+
+      //   let comparison = 0;
+      //   if (totalA > totalB) {
+      //     comparison = 1;
+      //   } else if (totalA < totalB) {
+      //     comparison = -1;
+      //   }
+      //   return comparison;
+      // }
+
+
+
+      
+      // const compare = (a,b)=>{
+      //   if (a > b) return -1;
+      //   if (b > a) return 1;
+
+      //   return 0;
+      // }
+
       const total = lastData.map(data=>data.total_cases)
       const names= lastData.map(data=>data.name)
 

@@ -5,6 +5,7 @@ import TotalChart from '../../Containers/Charts/TotalChart'
 import DailyChart from '../../Containers/Charts/DailyChart'
 import DoughChart from '../../Containers/Charts/DoughChart'
 import Table from '../../Containers/Table/Table'
+import Header from '../Header/Header'
 
 
 function Summary() {
@@ -46,13 +47,9 @@ function Summary() {
     },[])
 
     return (
-        data && report && date  &&
+        data && report && date  && basicData &&
             <div>
-                <h3>Last updated: {date}</h3>
-                <p>Total Cases: {data.total_cases} <span>⬆️ {data.change_cases}</span></p>
-                <p>Total Critical Cases:{data.total_criticals} <span>⬆️ {data.change_criticals}</span></p>
-                <p>Total Recoveries: {data.total_recoveries} <span>⬆️ {data.change_recoveries}</span></p>
-                <p>Total Fatalities: {data.total_fatalities} <span>⬆️ {data.change_fatalities}</span></p>
+                <Header date={date} data={data}/>
                 <CovidMap/>
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>
