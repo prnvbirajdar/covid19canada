@@ -56,10 +56,8 @@ function Summary() {
                 <CovidMap/>
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>
-                <DoughChart/>
-                <Table 
-                basicData={basicData} 
-                />
+                <DoughChart basicData={basicData} />
+                <Table basicData={basicData} />
             </div>
     )
 }

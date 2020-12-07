@@ -4,11 +4,14 @@ import { provinces} from '../../Components/Api/Api'
 
 function Table({ basicData}) {
 
-    const lData = basicData.map((e)=>e.data.data)
+    //get the data array from the main object
+    const lData = basicData.map((e)=>e.data.data) 
 
+    //get the latest cases from the last array
     let lastData = lData.map((e)=>e[e.length -1])
 
-    let newData = lastData.map((e,i)=>e['name'] = (provinces[i].Name))
+    //add name of the provinces to every lastData object, so it's easier to map
+    const newData = lastData.map((e,i)=>e['name'] = (provinces[i].Name))
 
     return (
 
