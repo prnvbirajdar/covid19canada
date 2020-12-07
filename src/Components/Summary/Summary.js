@@ -14,7 +14,6 @@ function Summary() {
     //state for provincial reports
     const [report, setReport] = useState([])
     //state for tables, doughchart and maps
-    const [provinceData, setProvinceData] = useState([])
     const [basicData, setBasicData] =useState([])
 
     const fetchData = async ()=>{
@@ -35,32 +34,6 @@ function Summary() {
             .catch(err=>console.log(`province data error: ${err}`))
 
         setBasicData(resp)
-
-        // if(!resp){
-        //     return null
-        // } else {
-
-            for (let i = 0; i < resp.length; i++) {
-                const provData = resp[i].data.data;
-                const provName = resp[i].data.province
-                
-                // console.log(provName , provData);
-
-
-                setProvinceData(provData)
-
-            }
-        // }
-
-        
-        // resp.forEach(i=>{
-        //     const provData = resp[i].data.data;
-        //     const provName = resp[i].data.province
-        //     console.log(provName);
-        //     console.log(provData);
-        // })
-
-
         setReport(res.data.data)
         setData(response.data.data[0])
         setDate(response.data.last_updated)
@@ -72,10 +45,8 @@ function Summary() {
         fetchData()
     },[])
 
-  
-    
     return (
-        data && report && date && provinceData &&
+        data && report && date  &&
             <div>
                 <h3>Last updated: {date}</h3>
                 <p>Total Cases: {data.total_cases} <span>⬆️ {data.change_cases}</span></p>
@@ -86,7 +57,9 @@ function Summary() {
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>
                 <DoughChart/>
-                <Table provinces={provinces} data={provinceData} basicData={basicData}/>
+                <Table 
+                basicData={basicData} 
+                />
             </div>
     )
 }
@@ -95,8 +68,45 @@ function Summary() {
 export default Summary
 
 
+// lastAB = {lastAB}
+// lastBC = {lastBC}
+// lastMB = {lastMB}
+// lastNB = {lastNB}
+// lastNL = {lastNL}
+// lastNS = {lastNS}
+// lastNT = {lastNT}
+// lastNU = {lastNU}
+// lastON = {lastON}
+// lastPE = {lastPE}
+// lastQC = {lastQC}
+// lastSK = {lastSK}
+// lastYT = {lastYT}
 
 
+
+        // if(!resp){
+        //     return null
+        // } else {
+
+            // for (let i = 0; i < resp.length; i++) {
+            //     const provData = resp[i].data.data;
+            //     const provName = resp[i].data.province
+                
+            //     // console.log(provName , provData);
+
+
+            //     setProvinceData(provData)
+
+            // }
+        // }
+
+        
+        // resp.forEach(i=>{
+        //     const provData = resp[i].data.data;
+        //     const provName = resp[i].data.province
+        //     console.log(provName);
+        //     console.log(provData);
+        // })
 
 
 

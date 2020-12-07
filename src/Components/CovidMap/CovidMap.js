@@ -1,14 +1,10 @@
 import React, {useState} from 'react'
 import {mapboxKey} from '../Api/Api'
-// import './covid-map.css'
-// import {Popup, TileLayer, MapContainer, Marker, GeoJSON} from 'react-leaflet'
-// import {Icon} from 'leaflet'
-// import canadaData from '../../Data/canada.json'
-
+import {Popup, TileLayer, MapContainer, Marker, GeoJSON} from 'react-leaflet'
+import {Icon} from 'leaflet'
+import canadaData from '../../Data/canada.geo.json'
+import './covid-map.css'
 import ReactMapGL from 'react-map-gl'
-
-// latitude: 56.130367,
-// longitude: -106.346771,
 
 function CovidMap() {
     const [viewport, setViewport] = useState({
@@ -19,9 +15,24 @@ function CovidMap() {
         height:"60vh"
     })
 
+    const canadaStyle = {
+        color:'#141414',
+        weight:1
+    }
+
+    const onEachProvince = (province, layer)=>{
+
+    }
 
     return (
         <React.Fragment>
+            <MapContainer center={[61.938950,-98.964961]} zoom={2.5} scrollWheelZoom={false}>
+                
+                <GeoJSON style={canadaStyle} data={canadaData.features} onEachFeature={onEachProvince}/>
+            </MapContainer>
+
+
+
             <ReactMapGL 
                 {...viewport} 
                 mapboxApiAccessToken={mapboxKey}
@@ -33,15 +44,15 @@ function CovidMap() {
 
 export default CovidMap
 
-
-// <MapContainer center={[61.938950,-98.964961]} zoom={2.5} scrollWheelZoom={false}>
-//                 <TileLayer
+// <TileLayer
 //                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 //                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 //                 />
-//                 <Marker position={[56.130367, -106.346771]}>
+
+
+
+//  <Marker position={[56.130367, -106.346771]}>
 //                     <Popup>
 //                         A pretty CSS3 popup. <br /> Easily customizable.
 //                     </Popup>
 //                 </Marker>
-//             </MapContainer>

@@ -2,49 +2,48 @@ import React from 'react'
 
 function Table({ basicData}) {
 
-const AB = basicData[0].data.data
-const lastAB = AB[AB.length -1]
+    const AB = basicData[0].data.data
+    const lastAB = AB[AB.length -1]
 
-const BC = basicData[1].data.data
-const lastBC = BC[BC.length -1]
+    const BC = basicData[1].data.data
+    const lastBC = BC[BC.length -1]
 
-const MB = basicData[2].data.data
-const lastMB = MB[MB.length -1]
+    const MB = basicData[2].data.data
+    const lastMB = MB[MB.length -1]
 
-const NB = basicData[3].data.data
-const lastNB = NB[NB.length -1]
+    const NB = basicData[3].data.data
+    const lastNB = NB[NB.length -1]
 
-const NL = basicData[4].data.data
-const lastNL = NL[NL.length -1]
+    const NL = basicData[4].data.data
+    const lastNL = NL[NL.length -1]
 
-const NS = basicData[5].data.data
-const lastNS = NS[NS.length -1]
+    const NS = basicData[5].data.data
+    const lastNS = NS[NS.length -1]
 
-const NT = basicData[6].data.data
-const lastNT = NT[NT.length -1]
+    const NT = basicData[6].data.data
+    const lastNT = NT[NT.length -1]
 
-const NU = basicData[7].data.data
-const lastNU = NU[NU.length -1]
+    const NU = basicData[7].data.data
+    const lastNU = NU[NU.length -1]
 
-const ON = basicData[8].data.data
-const lastON = ON[ON.length -1]
+    const ON = basicData[8].data.data
+    const lastON = ON[ON.length -1]
 
-const PE = basicData[9].data.data
-const lastPE = PE[PE.length -1]
+    const PE = basicData[9].data.data
+    const lastPE = PE[PE.length -1]
 
-const QC = basicData[10].data.data
-const lastQC = QC[QC.length -1]
+    const QC = basicData[10].data.data
+    const lastQC = QC[QC.length -1]
 
-const SK = basicData[11].data.data
-const lastSK = SK[SK.length -1]
+    const SK = basicData[11].data.data
+    const lastSK = SK[SK.length -1]
 
-const YT = basicData[12].data.data
-const lastYT = YT[YT.length -1]
+    const YT = basicData[12].data.data
+    const lastYT = YT[YT.length -1]
 
     return (
 
-        <div>
-            <table class="ui table striped unstackable">
+            <table class="ui striped celled table unstackable seven column">
                 <thead>
                     <tr>
                         <th>Province</th>
@@ -55,7 +54,8 @@ const lastYT = YT[YT.length -1]
                         <th>Recoveries</th>
                         <th>Tests</th>
                     </tr>
-
+                </thead>
+                <tbody>    
                     <tr>
                         <td data-label="Province">Alberta</td>
                         <td data-label="Cases">{lastAB.total_cases}</td>
@@ -93,7 +93,7 @@ const lastYT = YT[YT.length -1]
                         <td data-label="Cases">{lastNB.total_tests}</td>
                     </tr>
                     <tr>
-                        <td data-label="Province">Newfoundland and Labradow</td>
+                        <td data-label="Province">Newfoundland and Labrador</td>
                         <td data-label="Cases">{lastNL.total_cases}</td>
                         <td data-label="Deaths">{lastNL.total_fatalities}</td>
                         <td data-label="Active">{lastNL.total_cases - lastNL.total_recoveries - lastNL.total_fatalities}</td>
@@ -173,13 +173,8 @@ const lastYT = YT[YT.length -1]
                         <td data-label="Hospitalizations">{lastYT.total_hospitalizations}</td>
                         <td data-label="Cases">{lastYT.total_tests}</td>
                     </tr> 
-
-                </thead>
-                <tbody>    
-                    
                 </tbody>
             </table>
-        </div>
     )
 }
 

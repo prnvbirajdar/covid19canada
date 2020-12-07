@@ -5,6 +5,10 @@ const instance = axios.create({
     baseURL: "https://api.covid19tracker.ca",  
 })
 
+const reportInstance = axios.create({
+    baseURL:"https://api.covid19tracker.ca" 
+})
+
 // List of Country and Provinces
 const provinces = [
         {Code:"AB", Name: "Alberta"},
@@ -25,7 +29,7 @@ const provinces = [
 
 const mapboxKey = "pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw"
 
-export {instance, mapboxKey, provinces}
+export {instance, reportInstance, mapboxKey, provinces}
 
 
 // PROVINCE CODES

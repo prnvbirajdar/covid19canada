@@ -6,7 +6,6 @@ import {instance} from '../Api/Api'
 
 function Reports({match}) {
     const [report, setReport] = useState([])
-    // const [latestReport, setlatestReport] = useState({})
 
     useEffect(()=>{
         const fetchData = async()=>{
