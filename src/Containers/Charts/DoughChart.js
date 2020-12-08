@@ -39,9 +39,6 @@ function DoughChart({basicData}) {
       const total = lastData.map(data=>data.total_cases)
       const names= lastData.map(data=>data.name)
 
-
-  console.log(names, total);
-
     return (
         <div>
             <Doughnut 

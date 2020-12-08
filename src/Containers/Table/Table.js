@@ -1,8 +1,9 @@
 import React from 'react'
-import { provinces} from '../../Components/Api/Api'
+// import { provinces} from '../../Components/Api/Api'
 
 
-function Table({ basicData}) {
+function Table({ basicData, provinces}) {
+    console.log(basicData);
 
     //get the data array from the main object
     const lData = basicData.map((e)=>e.data.data) 

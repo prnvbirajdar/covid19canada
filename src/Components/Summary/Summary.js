@@ -46,16 +46,18 @@ function Summary() {
         fetchData()
     },[])
 
+    console.log(basicData);
+
     return (
         data && report && date  && basicData &&
             <div>
                 <div style={{paddingLeft:"0.5rem"}}><b>Last Updated: {date}</b></div>
                 <Header data={data}/>
-                <CovidMap/>
+                <CovidMap basicData={basicData} provinces={provinces}/>
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>
                 <DoughChart basicData={basicData} />
-                <Table basicData={basicData} />
+                <Table basicData={basicData} provinces={provinces}/>
             </div>
     )
 }
