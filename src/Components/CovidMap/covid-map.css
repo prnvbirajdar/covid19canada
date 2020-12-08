@@ -1,5 +1,6 @@
 .leaflet-container {
-  width: 80%;
-  height: 50vh;
+  width: 50%;
+  height: 400px;
   background-color: hsla(206, 100%, 83%, 0.356);
+  margin: 0 auto;
 }

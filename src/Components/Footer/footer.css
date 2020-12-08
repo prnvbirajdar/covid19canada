@@ -1,0 +1,58 @@
+.social {
+  margin: 4em 0 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.social-list {
+  list-style: none;
+}
+
+.social-link:link,
+.social-link:visited {
+  color: rgba(20, 20, 20, 0.753);
+  margin: 0 0.6em;
+  font-size: 1.2rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  color: rgba(255, 45, 45, 0.753);
+  transition: color 0.2s ease-out;
+}
+
+.copyright__div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.copyright {
+  font-family: inherit;
+  opacity: 0.6;
+  font-size: 0.6rem;
+  text-decoration: none;
+  color: #141414;
+}
+
+.copyright:hover,
+.copyright:focus {
+  color: rgb(255, 45, 45);
+  cursor: pointer;
+  transition: color 0.2s ease-out;
+}
+
+@media (min-width: 800px) {
+  .copyright {
+    font-size: 0.9rem;
+  }
+
+  .social-link:link,
+  .social-link:visited {
+    font-size: 1.5rem;
+  }
+
+  .social {
+    margin: 6em 0 3em;
+  }
+}
