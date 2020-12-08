@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import ProvinceHeader from './ProvinceHeader/ProvinceHeader'
 import TotalChart from '../../Containers/Charts/TotalChart'
 import DailyChart from '../../Containers/Charts/DailyChart'
 import {instance} from '../Api/Api'
+import Header from '../Header/Header'
 
 function Reports({match}) {
     const [report, setReport] = useState([])
@@ -23,7 +23,7 @@ function Reports({match}) {
     return (
         
        <div>
-            <ProvinceHeader latestReport={latestReport}/>
+            <Header data={latestReport} />
             <TotalChart report={report}/>
             <DailyChart report={report}/>
        </div> 

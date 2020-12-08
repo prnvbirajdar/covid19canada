@@ -49,7 +49,8 @@ function Summary() {
     return (
         data && report && date  && basicData &&
             <div>
-                <Header date={date} data={data}/>
+                <Header data={data}/>
+                <div style={{padding:"1rem"}}><b>Last Updated: {date}</b></div>
                 <CovidMap/>
                 <TotalChart report={report}/>
                 <DailyChart report={report}/>

@@ -1,145 +1,94 @@
-import React from 'react'
+import React from "react";
 
-function Header({date,data}) {
+function Header({ data }) {
+  const myStyle = {
+    display: "flex",
+    justifyContent: "space-evenly",
+    padding: "2rem 0",
+  };
 
-    const myStyle = {
-        display:'flex',
-        flexDirection:'column',
-        alignItems: 'center'
-    }
-
-
-
-
-
-    return (
-        <div style={myStyle}>
-        <div>
-            <h3>Last updated: {date}</h3>
+  return data === undefined ? null : (
+    <React.Fragment>
+      <div style={myStyle} class="ui four column stackable">
+        <div className="ui small statistic column">
+          <div className="label" style={{ color: "#145688" }}>
+            Cases
+          </div>
+          <div className="value" style={{ color: "#145688" }}>
+            {data.total_cases}
+          </div>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              color: "#145688",
+              fontWeight: "bold",
+            }}
+          >
+            {data.change_cases} today
+          </p>
         </div>
-           
-            <div class="ui five doubling cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="ui statistics" style={{margin:'auto', padding:0, display:'flex', justifyContent:"center"}}>
-                            <div class=" blue statistic">
-                                <div class="value">
-                                    {data.total_cases}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                    Total Cases
-                                </div>
-                            </div>
-                            <div class="ui blue statistic">
-                                <div class="value">
-                                {data.change_cases}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                   New Cases
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <div class="ui statistics" style={{margin:'auto', padding:0, display:'flex', justifyContent:"center"}}>
-                            <div class="red statistic">
-                                <div class="value">
-                                    {data.total_fatalities}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                    Total Deaths
-                                </div>
-                            </div>
-                            <div class="ui red statistic">
-                                <div class="value">
-                                {data.change_fatalities}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                   New Deaths
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <div class="ui statistics" style={{margin:'auto', padding:0, display:'flex', justifyContent:"center"}}>
-                            <div class="green statistic">
-                                <div class="value">
-                                    {data.total_recoveries}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                    Total Recoveries
-                                </div>
-                            </div>
-                            <div class="ui green statistic">
-                                <div class="value">
-                                {data.change_recoveries}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                New Recoveries
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <div class="ui statistics" style={{margin:'auto', padding:0, display:'flex', justifyContent:"center"}}>
-                            <div class="purple statistic">
-                                <div class="value">
-                                {data.total_cases - data.total_recoveries - data.total_fatalities}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                    Total Active
-                                </div>
-                            </div>
-                            <div class="ui purple statistic">
-                                <div class="value">
-                                {data.change_cases - data.change_recoveries - data.change_fatalities}
-                                </div>
-                                <div class="label" style={{fontSize:"1.2rem"}}>
-                                New Active
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="card">
-                <div class="content">
-                    <div class="ui statistics" style={{margin:'auto', padding:0, display:'flex', justifyContent:"center"}}>
-                        <div class="purple statistic">
-                            <div class="value">
-                            {data.total_cases - data.total_recoveries - data.total_fatalities}
-                            </div>
-                            <div class="label" style={{fontSize:"1.2rem"}}>
-                                Total Active
-                            </div>
-                        </div>
-                        <div class="ui purple statistic">
-                            <div class="value">
-                            {data.change_cases - data.change_recoveries - data.change_fatalities}
-                            </div>
-                            <div class="label" style={{fontSize:"1.2rem"}}>
-                            New Active
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-            </div>
+        <div className="ui small statistic column">
+          <div className="label" style={{ color: "#db2828" }}>
+            Deaths
+          </div>
+          <div className="value" style={{ color: "#db2828" }}>
+            {data.total_fatalities}
+          </div>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              color: "#db2828",
+              fontWeight: "bold",
+            }}
+          >
+            {data.change_fatalities} today
+          </p>
         </div>
-    )
+        <div className="ui small statistic column">
+          <div className="label" style={{ color: " #0d7926" }}>
+            Recoveries
+          </div>
+          <div className="value" style={{ color: " #0d7926" }}>
+            {data.total_recoveries}
+          </div>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              color: " #0d7926",
+              fontWeight: "bold",
+            }}
+          >
+            {data.change_recoveries} today
+          </p>
+        </div>
+
+        <div className="ui small statistic column">
+          <div className="label" style={{ color: "#73268d" }}>
+            Active
+          </div>
+          <div className="value" style={{ color: "#73268d" }}>
+            {data.total_cases - data.total_recoveries - data.total_fatalities}
+          </div>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: "1.1rem",
+              color: "#73268d",
+              fontWeight: "bold",
+            }}
+          >
+            {data.change_cases -
+              data.change_recoveries -
+              data.change_fatalities}{" "}
+            today
+          </p>
+        </div>
+      </div>
+    </React.Fragment>
+  );
 }
 
-export default Header
-
-
-// <p>Total Cases: {data.total_cases} <span>⬆️ {data.change_cases}</span></p>
-// <p>Total Critical Cases:{data.total_criticals} <span>⬆️ {data.change_criticals}</span></p>
-// <p>Total Recoveries: {data.total_recoveries} <span>⬆️ {data.change_recoveries}</span></p>
-// <p>Total Fatalities: {data.total_fatalities} <span>⬆️ {data.change_fatalities}</span></p>
+export default Header;
