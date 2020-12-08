@@ -46,8 +46,6 @@ function Summary() {
         fetchData()
     },[])
 
-    console.log(basicData);
-
     return (
         data && report && date  && basicData &&
             <div>

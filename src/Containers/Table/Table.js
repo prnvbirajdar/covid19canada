@@ -3,7 +3,6 @@ import React from 'react'
 
 
 function Table({ basicData, provinces}) {
-    console.log(basicData);
 
     //get the data array from the main object
     const lData = basicData.map((e)=>e.data.data) 
