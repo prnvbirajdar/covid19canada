@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-function TotalCases({ report }) {
+function TotalCases({ report, selectedProvince }) {
   const date = report.map((d) => d.date);
   const total = report.map((t) => (t.total_cases === null ? 0 : t.total_cases));
   const recoveries = report.map((t) =>
@@ -22,7 +22,10 @@ function TotalCases({ report }) {
     <div className="map__container">
       <div className="ui card ">
         <div className="content">
-          <div className="header">Cumulative Count</div>
+          <div className="header">
+            Cumulative Count for{" "}
+            {selectedProvince ? selectedProvince : "Canada"}
+          </div>
         </div>
         <div className="content">
           <Line
@@ -81,7 +84,7 @@ function TotalCases({ report }) {
                     type: "time",
                     time: {
                       displayFormats: {
-                        month: "MM YY",
+                        month: "MMM YY",
                       },
                     },
                     ticks: {

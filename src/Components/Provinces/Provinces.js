@@ -1,34 +1,38 @@
-import React, {useState, useEffect} from 'react'
-import TotalChart from '../../Containers/Charts/TotalChart'
-import DailyChart from '../../Containers/Charts/DailyChart'
-import {instance} from '../Api/Api'
-import Header from '../Header/Header'
+import React, { useState, useEffect } from "react";
+import TotalChart from "../../Containers/Charts/TotalChart";
+import DailyChart from "../../Containers/Charts/DailyChart";
+import { instance, provinces } from "../Api/Api";
+import Header from "../Header/Header";
 
-function Reports({match}) {
-    const [report, setReport] = useState([])
+function Reports({ match }) {
+  const [report, setReport] = useState([]);
 
-    useEffect(()=>{
-        const fetchData = async()=>{
-            const response = await instance.get(`/reports${match.url}`)
-                .catch(err=>console.log(`province error: ${err}`))
-            setReport(response.data.data)
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await instance
+        .get(`/reports${match.url}`)
+        .catch((err) => console.log(`province error: ${err}`));
+      setReport(response.data.data);
 
-            return response
-        }
-        fetchData()
-    },[match.url])
+      return response;
+    };
+    fetchData();
+  }, [match.url]);
 
-    const latestReport = report[report.length - 1]
-   
-    return (
-        
-       <div>
-            <Header data={latestReport} />
-            <TotalChart report={report}/>
-            <DailyChart report={report}/>
-       </div> 
-    )
+  const latestReport = report[report.length - 1];
+
+  const selectedProvince = provinces.map((p) =>
+    p.Code === match.params.code ? p.Name : null
+  );
+
+  return (
+    <div>
+      <h2>{selectedProvince}</h2>
+      <Header data={latestReport} />
+      <TotalChart report={report} selectedProvince={selectedProvince} />
+      <DailyChart report={report} selectedProvince={selectedProvince} />
+    </div>
+  );
 }
 
-export default Reports
-
+export default Reports;

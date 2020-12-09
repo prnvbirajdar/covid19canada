@@ -17,10 +17,10 @@ function Table({ basicData, provinces }) {
     <div className="map__container">
       <div className="ui card ">
         <div className="content">
-          <div className="header">Canada COVID-19 Cases Provincial Map</div>
+          <div className="header">COVID-19 Data by Province</div>
         </div>
-        <div className="content">
-          <table class="ui striped celled table unstackable seven column">
+        <div className="content" style={{ overflowX: "auto" }}>
+          <table class="ui selectable celled table unstackable seven column">
             <thead>
               <tr>
                 <th>Province</th>
@@ -40,24 +40,50 @@ function Table({ basicData, provinces }) {
                       <b>{data.name}</b>
                     </td>
                     <td className="collapsing" data-label="Cases">
-                      {data.total_cases}
+                      {data.total_cases} <br /> (
+                      {data.change_cases === null ? 0 : data.change_cases}{" "}
+                      today)
                     </td>
                     <td className="collapsing" data-label="Deaths">
-                      {data.total_fatalities}
+                      {data.total_fatalities} <br /> (
+                      {data.change_fatalities === null
+                        ? 0
+                        : data.change_fatalities}{" "}
+                      today)
                     </td>
                     <td className="collapsing" data-label="Active">
                       {data.total_cases -
                         data.total_recoveries -
-                        data.total_fatalities}
+                        data.total_fatalities}{" "}
+                      <br />(
+                      {data.change_cases -
+                        data.change_recoveries -
+                        data.change_fatalities ===
+                      null
+                        ? 0
+                        : data.change_cases -
+                          data.change_recoveries -
+                          data.change_fatalities}{" "}
+                      today)
                     </td>
                     <td className="collapsing" data-label="Recoveries">
-                      {data.total_recoveries}
+                      {data.total_recoveries} <br /> (
+                      {data.change_recoveries === null
+                        ? 0
+                        : data.change_recoveries}{" "}
+                      today)
                     </td>
                     <td className="collapsing" data-label="Hospitalizations">
-                      {data.total_hospitalizations}
+                      {data.total_hospitalizations} <br /> (
+                      {data.change_hospitalizations === null
+                        ? 0
+                        : data.change_hospitalizations}{" "}
+                      today)
                     </td>
                     <td className="collapsing" data-label="Cases">
-                      {data.total_tests}
+                      {data.total_tests} <br /> (
+                      {data.change_tests === null ? 0 : data.change_tests}{" "}
+                      today)
                     </td>
                   </tr>
                 );

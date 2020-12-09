@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 
-function DailyCases({ report }) {
+function DailyCases({ report, selectedProvince }) {
   const date = report.map((d) => d.date);
   const total = report.map((t) =>
     t.change_cases === null ? 0 : t.change_cases
@@ -24,7 +24,9 @@ function DailyCases({ report }) {
     <div className="map__container">
       <div className="ui card ">
         <div className="content">
-          <div className="header">Daily Count</div>
+          <div className="header">
+            Daily Count for {selectedProvince ? selectedProvince : "Canada"}
+          </div>
         </div>
         <div className="content">
           <Line
