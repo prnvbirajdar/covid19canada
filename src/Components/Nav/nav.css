@@ -1,5 +1,9 @@
 .nav {
   z-index: 1000;
+  background-color: rgb(32, 32, 43) !important;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 
 .nav__options {

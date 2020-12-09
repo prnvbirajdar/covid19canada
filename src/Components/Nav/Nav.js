@@ -1,4 +1,3 @@
-import { imageOverlay } from "leaflet";
 import React, { useState } from "react";
 import { Menu, Dropdown, MenuItem } from "semantic-ui-react";
 import "./nav.css";
@@ -20,21 +19,24 @@ function Nav({ provinces }) {
     <Menu className="nav">
       <Menu.Item>
         <Link to="/">
-          <i class="fas fa-shield-virus" style={{ fontSize: "3rem" }}></i>
+          <i
+            class="fas fa-shield-virus"
+            style={{ fontSize: "3rem", color: "white" }}
+          ></i>
         </Link>
       </Menu.Item>
 
       <Dropdown
         placeholder="Select Province"
         className="link item dropdown"
-        style={{ paddingRight: "5rem" }}
+        style={{ paddingRight: "5rem", color: "white" }}
       >
         <Dropdown.Menu>
           {data.map((province) => {
             return (
               <Dropdown.Item key={province.Code} value={province.Code}>
                 <Link to={`/province/${province.Code}`}>
-                  <p>{province.Name}</p>
+                  <p style={{ color: "black" }}>{province.Name}</p>
                 </Link>
               </Dropdown.Item>
             );

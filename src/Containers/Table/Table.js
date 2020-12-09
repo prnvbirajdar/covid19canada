@@ -19,7 +19,7 @@ function Table({ basicData, provinces }) {
         <div className="content">
           <div className="header">COVID-19 Data by Province</div>
         </div>
-        <div className="content " style={{ overflowX: "scroll" }}>
+        <div className="content " style={{ overflowX: "auto" }}>
           <table
             class="ui selectable celled table unstackable seven column"
             id="ui__table"

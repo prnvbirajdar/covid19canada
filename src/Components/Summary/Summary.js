@@ -56,7 +56,7 @@ function Summary() {
     date &&
     basicData && (
       <div>
-        <div style={{ padding: "0.5rem 0 2rem 1rem" }}>
+        <div style={{ padding: "0.5rem 0 2rem 1rem", marginTop: "6rem" }}>
           <b>Last Updated: {date}</b>
         </div>
         <Header data={data} />
