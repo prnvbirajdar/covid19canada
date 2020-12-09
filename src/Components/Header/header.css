@@ -1,0 +1,26 @@
+.today--style {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.header__div {
+  border-radius: 10px;
+}
+
+.header__div--cases {
+  background-color: rgba(20, 86, 136, 0.3);
+}
+
+.header__div--recoveries {
+  background-color: rgba(13, 121, 38, 0.3);
+}
+
+.header__div--active {
+  background-color: rgba(115, 38, 141, 0.3);
+}
+
+.header__div--deaths {
+  background-color: rgba(219, 41, 41, 0.3);
+}
+

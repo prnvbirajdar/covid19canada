@@ -1,22 +1,6 @@
 import React from "react";
-import {
-  Popup,
-  TileLayer,
-  MapContainer,
-  Marker,
-  GeoJSON,
-  CircleMarker,
-  Tooltip,
-} from "react-leaflet";
-import { Icon } from "leaflet";
-import canadaData from "../../Data/newCanada.geo.json";
+import { TileLayer, MapContainer, CircleMarker, Tooltip } from "react-leaflet";
 import "./covid-map.css";
-
-// <GeoJSON
-// style={canadaStyle}
-// data={canadaData.features}
-// onEachFeature={onEachProvince}
-// />
 
 function CovidMap({ basicData, provinces }) {
   //get the data array from the main object
@@ -31,66 +15,58 @@ function CovidMap({ basicData, provinces }) {
     lastData[i].coordinates = provinces[i].coordinates;
   }
 
-  console.log(lastData);
-
-  const canadaStyle = {
-    color: "#141414",
-    weight: 1,
-    fillColor: "purple",
-    fillOpacity: 0.3,
-  };
-
-  const onEachProvince = (province, layer) => {
-    const provinceName = province.properties.NAME;
-    layer.bindPopup(provinceName);
-
-    layer.on({
-      mouseover: (event) => {
-        layer.openTooltip();
-        event.target.setStyle({
-          fillColor: "yellow",
-        });
-      },
-      mouseout: (event) => {
-        layer.closeTooltip();
-        event.target.setStyle({
-          fillColor: "purple",
-        });
-      },
-    });
-  };
-
   return (
-    <React.Fragment>
-      <MapContainer
-        center={[59.933, -101.821377]}
-        zoom={3.5}
-        scrollWheelZoom={true}
-      >
-        <TileLayer url="https://api.mapbox.com/styles/v1/cg709/cki6bfur32hye19o47s7r367b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw" />
+    <div className="map__container">
+      <div className="ui card ">
+        <div className="content">
+          <div className="header">
+            <i class="fas fa-map-marked-alt"/> Map
+          </div>
+        </div>
+        <div className="content">
+          <MapContainer
+            center={[59.933, -99.035684]}
+            zoom={3.5}
+            scrollWheelZoom={false}
+          >
+            <TileLayer url="https://api.mapbox.com/styles/v1/cg709/cki6bfur32hye19o47s7r367b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw" />
 
-        {lastData.map((p) => {
-          return (
-            <CircleMarker
-              center={[p.coordinates[0], p.coordinates[1]]}
-              radius={8 * Math.log(p.total_cases / 10)}
-              fillOpacity={0.3}
-              stroke={false}
-              color="red"
-              weight="3"
-              onMouseOver={(e) => e.target.setStyle({ fillColor: "green" })}
-              onMouseOut={(e) => e.target.setStyle({ fillColor: "blue" })}
-            >
-              <Tooltip direction="bottom" offset={[-8, -2]} opacity={1}>
-                <span>
-                  {p.Name + ": " + "Population" + " " + city["population"]}
-                </span>
-              </Tooltip>
-            </CircleMarker>
-          );
-        })}
-      </MapContainer>
-    </React.Fragment>
+            {lastData.map((p) => {
+              return (
+                <CircleMarker
+                  center={[p.coordinates[0], p.coordinates[1]]}
+                  radius={
+                    p.total_cases < 300
+                      ? 10 * Math.log(p.total_cases / 10)
+                      : 8 * Math.log(p.total_cases / 10)
+                  }
+                  fillOpacity={p.total_cases < 500 ? 0.3 : 0.6}
+                  stroke={false}
+                  color="red"
+                >
+                  <Tooltip direction="right" opacity={1}>
+                    <span>
+                      <b>{p.name}</b>
+                    </span>
+                    <br />
+                    <span>
+                      Active Cases:{" "}
+                      {p.total_cases - p.total_recoveries - p.total_fatalities}
+                    </span>{" "}
+                    <br />
+                    <span>Total Cases: {p.total_cases}</span> <br />
+                    <span>Deaths: {p.total_fatalities}</span> <br />
+                    <span>Hospitalized: {p.total_hospitalizations}</span> <br />
+                    <span>Recovered: {p.total_recoveries}</span> <br />
+                    <span>Critical: {p.total_criticals}</span> <br />
+                  </Tooltip>
+                </CircleMarker>
+              );
+            })}
+          </MapContainer>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -114,3 +90,88 @@ export default CovidMap;
 // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
 // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 // />;
+
+// console.log(lastData);
+
+// <GeoJSON
+// style={canadaStyle}
+// data={canadaData.features}
+// onEachFeature={onEachProvince}
+// />
+
+// const canadaStyle = {
+//   color: "#141414",
+//   weight: 1,
+//   fillColor: "purple",
+//   fillOpacity: 0.3,
+// };
+
+// const onEachProvince = (province, layer) => {
+//   const provinceName = province.properties.NAME;
+//   layer.bindPopup(provinceName);
+
+//   layer.on({
+//     mouseover: (event) => {
+//       layer.openTooltip();
+//       event.target.setStyle({
+//         fillColor: "yellow",
+//       });
+//     },
+//     mouseout: (event) => {
+//       layer.closeTooltip();
+//       event.target.setStyle({
+//         fillColor: "purple",
+//       });
+//     },
+//   });
+// };
+
+// <div class="ui card">
+//   <div class="content">
+//     <div class="header">Project Timeline</div>
+//   </div>
+//   <div class="content">
+//   <div className="map__container">
+//   <MapContainer
+//     center={[59.933, -99.035684]}
+//     zoom={3.5}
+//     scrollWheelZoom={false}
+//   >
+//     <TileLayer url="https://api.mapbox.com/styles/v1/cg709/cki6bfur32hye19o47s7r367b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw" />
+
+//     {lastData.map((p) => {
+//       return (
+//         <CircleMarker
+//           center={[p.coordinates[0], p.coordinates[1]]}
+//           radius={
+//             p.total_cases < 300
+//               ? 10 * Math.log(p.total_cases / 10)
+//               : 8 * Math.log(p.total_cases / 10)
+//           }
+//           fillOpacity={p.total_cases < 500 ? 0.3 : 0.6}
+//           stroke={false}
+//           color="red"
+//         >
+//           <Tooltip direction="right" opacity={1}>
+//             <span>
+//               <b>{p.name}</b>
+//             </span>
+//             <br />
+//             <span>
+//               Active Cases:{" "}
+//               {p.total_cases - p.total_recoveries - p.total_fatalities}
+//             </span>{" "}
+//             <br />
+//             <span>Total Cases: {p.total_cases}</span> <br />
+//             <span>Deaths: {p.total_fatalities}</span> <br />
+//             <span>Hospitalized: {p.total_hospitalizations}</span> <br />
+//             <span>Recovered: {p.total_recoveries}</span> <br />
+//             <span>Critical: {p.total_criticals}</span> <br />
+//           </Tooltip>
+//         </CircleMarker>
+//       );
+//     })}
+//   </MapContainer>
+// </div>
+//   </div>
+// </div>

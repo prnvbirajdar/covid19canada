@@ -1,94 +1,119 @@
 import React from "react";
+import "./header.css";
 
 function Header({ data }) {
-  const myStyle = {
-    display: "flex",
-    justifyContent: "space-evenly",
-    padding: "2rem 0",
-  };
+  const casesColor = { color: "#145688" };
+  const deathsColor = { color: "#db2828" };
+  const recoveredColor = { color: "#0d7926" };
+  const activeColor = { color: "#73268d" };
 
   return data === undefined ? null : (
-    <React.Fragment>
-      <div style={myStyle} class="ui four column stackable">
-        <div className="ui small statistic column">
-          <div className="label" style={{ color: "#145688" }}>
-            Cases
-          </div>
-          <div className="value" style={{ color: "#145688" }}>
-            {data.total_cases}
-          </div>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.1rem",
-              color: "#145688",
-              fontWeight: "bold",
-            }}
-          >
-            {data.change_cases} today
-          </p>
+    <div class="ui five column centered grid doubling stackable container">
+      <div className="ui column small statistic header__div header__div--cases">
+        <div className="label" style={casesColor}>
+          Cases
         </div>
-        <div className="ui small statistic column">
-          <div className="label" style={{ color: "#db2828" }}>
-            Deaths
-          </div>
-          <div className="value" style={{ color: "#db2828" }}>
-            {data.total_fatalities}
-          </div>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.1rem",
-              color: "#db2828",
-              fontWeight: "bold",
-            }}
-          >
-            {data.change_fatalities} today
-          </p>
+        <div className="value" style={casesColor}>
+          {data.total_cases}
         </div>
-        <div className="ui small statistic column">
-          <div className="label" style={{ color: " #0d7926" }}>
-            Recoveries
-          </div>
-          <div className="value" style={{ color: " #0d7926" }}>
-            {data.total_recoveries}
-          </div>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.1rem",
-              color: " #0d7926",
-              fontWeight: "bold",
-            }}
-          >
-            {data.change_recoveries} today
-          </p>
-        </div>
-
-        <div className="ui small statistic column">
-          <div className="label" style={{ color: "#73268d" }}>
-            Active
-          </div>
-          <div className="value" style={{ color: "#73268d" }}>
-            {data.total_cases - data.total_recoveries - data.total_fatalities}
-          </div>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: "1.1rem",
-              color: "#73268d",
-              fontWeight: "bold",
-            }}
-          >
-            {data.change_cases -
-              data.change_recoveries -
-              data.change_fatalities}{" "}
-            today
-          </p>
-        </div>
+        <p className="today--style" style={casesColor}>
+          {data.change_cases} today
+        </p>
       </div>
-    </React.Fragment>
+      <div className="ui column small statistic header__div header__div--deaths">
+        <div className="label" style={deathsColor}>
+          Deaths
+        </div>
+        <div className="value" style={deathsColor}>
+          {data.total_fatalities}
+        </div>
+        <p className="today--style" style={deathsColor}>
+          {data.change_fatalities} today
+        </p>
+      </div>
+      <div className="ui column small statistic header__div header__div--recoveries">
+        <div className="label" style={recoveredColor}>
+          Recoveries
+        </div>
+        <div className="value" style={recoveredColor}>
+          {data.total_recoveries}
+        </div>
+        <p className="today--style" style={recoveredColor}>
+          {data.change_recoveries} today
+        </p>
+      </div>
+      <div className="ui column small statistic header__div header__div--active">
+        <div className="label" style={activeColor}>
+          Active
+        </div>
+        <div className="value" style={activeColor}>
+          {data.total_cases - data.total_recoveries - data.total_fatalities}
+        </div>
+        <p className="today--style" style={activeColor}>
+          {data.change_cases - data.change_recoveries - data.change_fatalities}{" "}
+          today
+        </p>
+      </div>
+    </div>
   );
 }
 
 export default Header;
+
+// const myStyle = {
+//   display: "flex",
+//   flexDirection: "column",
+//   justifyContent: "space-evenly",
+//   padding: "2rem 0",
+// };
+
+// <div style={myStyle} class="ui four column stackable">
+//         <div className="ui small statistic column">
+//           <div className="label" style={casesColor}>
+//             Cases
+//           </div>
+//           <div className="value" style={casesColor}>
+//             {data.total_cases}
+//           </div>
+//           <p className="today--style" style={casesColor}>
+//             {data.change_cases} today
+//           </p>
+//         </div>
+//         <div className="ui small statistic column">
+//           <div className="label" style={deathsColor}>
+//             Deaths
+//           </div>
+//           <div className="value" style={deathsColor}>
+//             {data.total_fatalities}
+//           </div>
+//           <p className="today--style" style={deathsColor}>
+//             {data.change_fatalities} today
+//           </p>
+//         </div>
+//         <div className="ui small statistic column">
+//           <div className="label" style={recoveredColor}>
+//             Recoveries
+//           </div>
+//           <div className="value" style={recoveredColor}>
+//             {data.total_recoveries}
+//           </div>
+//           <p className="today--style" style={recoveredColor}>
+//             {data.change_recoveries} today
+//           </p>
+//         </div>
+
+//         <div className="ui small statistic column">
+//           <div className="label" style={activeColor}>
+//             Active
+//           </div>
+//           <div className="value" style={activeColor}>
+//             {data.total_cases - data.total_recoveries - data.total_fatalities}
+//           </div>
+//           <p className="today--style" style={activeColor}>
+//             {data.change_cases -
+//               data.change_recoveries -
+//               data.change_fatalities}{" "}
+//             today
+//           </p>
+//         </div>
+//       </div>
