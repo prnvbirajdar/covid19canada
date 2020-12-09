@@ -8,8 +8,11 @@ function Header({ data }) {
   const activeColor = { color: "#73268d" };
 
   return data === undefined ? null : (
-    <div class="ui five column centered grid doubling stackable container">
-      <div className="ui column small statistic header__div header__div--cases">
+    <div
+      class="ui five column centered grid doubling stackable container"
+      id="grid"
+    >
+      <div className="ui column small statistic header__div header__div--cases" id="grid__column">
         <div className="label" style={casesColor}>
           Cases
         </div>

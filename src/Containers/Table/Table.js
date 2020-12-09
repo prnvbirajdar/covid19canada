@@ -15,12 +15,15 @@ function Table({ basicData, provinces }) {
 
   return (
     <div className="map__container">
-      <div className="ui card ">
+      <div className="ui card" id="ui__card">
         <div className="content">
           <div className="header">COVID-19 Data by Province</div>
         </div>
-        <div className="content" style={{ overflowX: "auto" }}>
-          <table class="ui selectable celled table unstackable seven column">
+        <div className="content " style={{ overflowX: "scroll" }}>
+          <table
+            class="ui selectable celled table unstackable seven column"
+            id="ui__table"
+          >
             <thead>
               <tr>
                 <th>Province</th>
