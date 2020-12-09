@@ -19,9 +19,7 @@ function CovidMap({ basicData, provinces }) {
     <div className="map__container">
       <div className="ui card ">
         <div className="content">
-          <div className="header">
-            <i class="fas fa-map-marked-alt"/> Map
-          </div>
+          <div className="header">Canada COVID-19 Cases Provincial Map</div>
         </div>
         <div className="content">
           <MapContainer
@@ -36,12 +34,13 @@ function CovidMap({ basicData, provinces }) {
                 <CircleMarker
                   center={[p.coordinates[0], p.coordinates[1]]}
                   radius={
-                    p.total_cases < 300
-                      ? 10 * Math.log(p.total_cases / 10)
+                    p.total_cases < 200
+                      ? 12 * Math.log(p.total_cases / 10)
                       : 8 * Math.log(p.total_cases / 10)
                   }
                   fillOpacity={p.total_cases < 500 ? 0.3 : 0.6}
-                  stroke={false}
+                  stroke={true}
+                  weight="2"
                   color="red"
                 >
                   <Tooltip direction="right" opacity={1}>
@@ -175,3 +174,14 @@ export default CovidMap;
 // </div>
 //   </div>
 // </div>
+
+
+// <div className="map__container">
+// <div className="ui card ">
+//   <div className="content">
+//     <div className="header">Canada COVID-19 Cases Provincial Map</div>
+//   </div>
+//   <div className="content">
+//   </div>
+//   </div>
+//   </div>
