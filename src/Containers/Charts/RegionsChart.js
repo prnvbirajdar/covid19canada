@@ -1,5 +1,5 @@
 import React from "react";
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { provinces } from "../../Components/Api/Api";
 
 function DoughChart({ basicData }) {
@@ -14,6 +14,7 @@ function DoughChart({ basicData }) {
     lastData[i].name = provinces[i].Name;
   }
 
+  //get individual array of each province
   const abData = lastData[0];
   const bcData = lastData[1];
   const mbData = lastData[2];
@@ -28,6 +29,7 @@ function DoughChart({ basicData }) {
   const skData = lastData[11];
   const ytData = lastData[12];
 
+  //prairie region info
   const prairieCases =
     abData.total_cases + mbData.total_cases + skData.total_cases;
   const prairieFatalities =
@@ -39,12 +41,14 @@ function DoughChart({ basicData }) {
     mbData.total_hospitalizations +
     skData.total_hospitalizations;
 
+  //central region info
   const centralCases = onData.total_cases + qcData.total_cases;
   const centralFatalities = onData.total_fatalities + qcData.total_fatalities;
   const centralRecoveries = onData.total_recoveries + qcData.total_recoveries;
   const centralHospitalizations =
     onData.total_hospitalizations + qcData.total_hospitalizations;
 
+  //northern region info
   const northernCases =
     ytData.total_cases + ntData.total_cases + nuData.total_cases;
   const northernFatalities =
@@ -56,11 +60,13 @@ function DoughChart({ basicData }) {
     ntData.total_hospitalizations +
     nuData.total_hospitalizations;
 
+  //pacific region info
   const pacificCases = bcData.total_cases;
   const pacificFatalities = bcData.total_fatalities;
   const pacificRecoveries = bcData.total_recoveries;
   const pacificHospitalizations = bcData.total_hospitalizations;
 
+  //atlantic region info
   const atlanticCases =
     nlData.total_cases +
     peData.total_cases +
@@ -83,7 +89,6 @@ function DoughChart({ basicData }) {
     nbData.total_hospitalizations;
 
   return (
-    <div className="map__container">
       <div className="ui card ">
         <div className="content">
           <div className="header">Regional COVID-19 Count</div>
@@ -157,6 +162,8 @@ function DoughChart({ basicData }) {
               ],
             }}
             options={{
+              width: "100%",
+              height: "50vh",
               maintainAspectRatio: false,
               responsive: true,
               title: {
@@ -191,58 +198,7 @@ function DoughChart({ basicData }) {
           />
         </div>
       </div>
-    </div>
   );
 }
 
 export default DoughChart;
-
-// <Doughnut
-//         data={{
-//           labels: names,
-//           datasets: [
-//             {
-//               label: "Cases",
-//               data: total,
-//               backgroundColor: [
-//                 "rgba(255, 99, 132, 0.4)",
-//                 "rgba(68, 162, 23, 0.4)",
-//                 "rgba(255, 206, 86, 0.4)",
-//                 "rgba(75, 192, 192, 0.4)",
-//                 "rgba(153, 102, 255, 0.4)",
-//                 "rgba(255, 159, 64, 0.4)",
-//                 "rgba(128, 0, 0, 0.4)",
-//                 "rgba(0, 0, 128, 0.4)",
-//                 "rgba(170, 110, 40, 0.4)",
-//                 "rgba(136, 128, 128, 0.4)",
-//                 "rgba(250, 2, 9, 0.4)",
-//                 "rgba(145, 30, 180, 0.4)",
-//                 "rgba(170, 255, 9, 0.4)",
-//               ],
-//               borderColor: [
-//                 "rgba(255, 99, 132, 1)",
-//                 "rgba(68, 162, 23, 1)",
-//                 "rgba(255, 206, 86, 1)",
-//                 "rgba(75, 192, 192, 1)",
-//                 "rgba(153, 102, 255, 1)",
-//                 "rgba(255, 159, 64, 1)",
-//                 "rgba(128, 0, 0, 1)",
-//                 "rgba(0, 0, 128, 1)",
-//                 "rgba(170, 110, 40, 1)",
-//                 "rgba(136, 128, 128, 1)",
-//                 "rgba(250, 2, 9, 1)",
-//                 "rgba(145, 30, 180, 1)",
-//                 "rgba(70, 255, 9, 1)",
-//               ],
-//               borderWidth: 1,
-//             },
-//           ],
-//         }}
-//         options={{
-//           responsive: true,
-//           legend: {
-//             position: "left",
-//           },
-//           cutoutPercentag: 50,
-//         }}
-//       />

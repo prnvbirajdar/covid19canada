@@ -14,7 +14,6 @@ function Table({ basicData, provinces }) {
   }
 
   return (
-    <div className="map__container">
       <div className="ui card" id="ui__card">
         <div className="content">
           <div className="header">COVID-19 Data by Province</div>
@@ -95,7 +94,6 @@ function Table({ basicData, provinces }) {
           </table>
         </div>
       </div>
-    </div>
   );
 }
 

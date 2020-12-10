@@ -9,10 +9,13 @@ function Header({ data }) {
 
   return data === undefined ? null : (
     <div
-      class="ui five column centered grid doubling stackable container"
+      class="ui doubling five column centered grid  stackable container"
       id="grid"
     >
-      <div className="ui column small statistic header__div header__div--cases" id="grid__column">
+      <div
+        className="ui column small statistic header__div header__div--cases"
+        id="grid__column"
+      >
         <div className="label" style={casesColor}>
           Cases
         </div>

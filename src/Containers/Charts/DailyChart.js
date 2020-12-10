@@ -21,7 +21,6 @@ function DailyCases({ report, selectedProvince }) {
     recoveries === [] ||
     fatalities === [] ||
     hospitalizations === [] ? null : (
-    <div className="map__container">
       <div className="ui card ">
         <div className="content">
           <div className="header">
@@ -71,7 +70,9 @@ function DailyCases({ report, selectedProvince }) {
               ],
             }}
             options={{
-              maintainAspectRatio: true,
+              width: "100%",
+              height: "50vh",
+              maintainAspectRatio: false,
               responsive: true,
               title: {
                 display: false,
@@ -117,7 +118,6 @@ function DailyCases({ report, selectedProvince }) {
           />
         </div>
       </div>
-    </div>
   );
 }
 

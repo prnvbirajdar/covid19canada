@@ -3,9 +3,10 @@ import { instance, provinces } from "../Api/Api";
 import CovidMap from "../CovidMap/CovidMap";
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
-import DoughChart from "../../Containers/Charts/DoughChart";
+import RegionsChart from "../../Containers/Charts/RegionsChart";
 import Table from "../../Containers/Table/Table";
 import Header from "../Header/Header";
+import "./summary.css";
 
 function Summary() {
   //state for summary
@@ -60,14 +61,52 @@ function Summary() {
           <b>Last Updated: {date}</b>
         </div>
         <Header data={data} />
-        <CovidMap basicData={basicData} provinces={provinces} />
-        <TotalChart report={report} />
-        <DailyChart report={report} />
-        <DoughChart basicData={basicData} />
-        <Table basicData={basicData} provinces={provinces} />
+        <div className="ui four column centered stackable grid container">
+          <CovidMap
+            className="column"
+            basicData={basicData}
+            provinces={provinces}
+          />
+          <TotalChart className="column" report={report} />
+        </div>
+        <div className="ui four column centered stackable grid container">
+          <DailyChart className="column" report={report} />
+          <RegionsChart className="column" basicData={basicData} />
+        </div>
+        <div className="ui four column centered stackable grid container">
+          <Table
+            basicData={basicData}
+            provinces={provinces}
+            className="column"
+          />
+        </div>
       </div>
     )
   );
 }
 
 export default Summary;
+
+// <div>
+// <div style={{ padding: "0.5rem 0 2rem 1rem", marginTop: "6rem" }}>
+//   <b>Last Updated: {date}</b>
+// </div>
+// <Header data={data} />
+// <div className="summary__flex">
+//   <CovidMap
+//     basicData={basicData}
+//     provinces={provinces}
+//     className="flex__items"
+//   />
+//   <TotalChart report={report} className="flex__items" />
+// </div>
+// <div className="summary__flex ">
+//   <DailyChart report={report} className="flex__items" />
+//   <RegionsChart basicData={basicData} className="flex__items" />
+// </div>
+// <Table
+//   basicData={basicData}
+//   provinces={provinces}
+//   className="flex__items"
+// />
+// </div>

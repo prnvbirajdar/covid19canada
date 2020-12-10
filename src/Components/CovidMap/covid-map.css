@@ -1,11 +1,11 @@
-.map__container {
+/* .map__container {
   margin-top: 2.5rem;
   display: flex;
   justify-content: center;
   padding: 0;
   margin-left: 0;
   margin-right: 0;
-}
+} */
 
 .leaflet-container {
   width: 100%;
@@ -16,5 +16,7 @@
 
 .ui.card,
 .ui.cards > .card {
+  margin-top: 2.5rem !important;
+
   width: 95% !important;
 }

@@ -16,7 +16,6 @@ function CovidMap({ basicData, provinces }) {
   }
 
   return (
-    <div className="map__container">
       <div className="ui card ">
         <div className="content">
           <div className="header">Canada COVID-19 Cases Provincial Map</div>
@@ -65,7 +64,6 @@ function CovidMap({ basicData, provinces }) {
           </MapContainer>
         </div>
       </div>
-    </div>
   );
 }
 
