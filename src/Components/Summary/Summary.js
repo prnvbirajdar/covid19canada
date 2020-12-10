@@ -7,6 +7,7 @@ import RegionsChart from "../../Containers/Charts/RegionsChart";
 import Table from "../../Containers/Table/Table";
 import Header from "../Header/Header";
 import "./summary.css";
+import UpdateDate from "../UpdateDate/UpdateDate";
 
 function Summary() {
   //state for summary
@@ -57,27 +58,31 @@ function Summary() {
     date &&
     basicData && (
       <div>
-        <div style={{ padding: "0.5rem 0 2rem 1rem", marginTop: "6rem" }}>
-          <b>Last Updated: {date}</b>
-        </div>
+        <h1
+          className="province__title"
+          style={{ marginTop: "5.5rem", padding: "0.75rem" }}
+        >
+          COVID-19 Data for Canada
+        </h1>
         <Header data={data} />
-        <div className="ui four column centered stackable grid container">
+        <UpdateDate date={date} />
+        <div className="ui four column centered stackable grid container item__size">
           <CovidMap
-            className="column"
+            className="column "
             basicData={basicData}
             provinces={provinces}
           />
-          <TotalChart className="column" report={report} />
+          <TotalChart className="column " report={report} />
         </div>
-        <div className="ui four column centered stackable grid container">
-          <DailyChart className="column" report={report} />
-          <RegionsChart className="column" basicData={basicData} />
+        <div className="ui four column centered stackable grid container item__size">
+          <DailyChart className="column " report={report} />
+          <RegionsChart className="column " basicData={basicData} />
         </div>
-        <div className="ui four column centered stackable grid container">
+        <div className="ui four column centered stackable grid container item__size">
           <Table
             basicData={basicData}
             provinces={provinces}
-            className="column"
+            className="column "
           />
         </div>
       </div>
@@ -86,27 +91,3 @@ function Summary() {
 }
 
 export default Summary;
-
-// <div>
-// <div style={{ padding: "0.5rem 0 2rem 1rem", marginTop: "6rem" }}>
-//   <b>Last Updated: {date}</b>
-// </div>
-// <Header data={data} />
-// <div className="summary__flex">
-//   <CovidMap
-//     basicData={basicData}
-//     provinces={provinces}
-//     className="flex__items"
-//   />
-//   <TotalChart report={report} className="flex__items" />
-// </div>
-// <div className="summary__flex ">
-//   <DailyChart report={report} className="flex__items" />
-//   <RegionsChart basicData={basicData} className="flex__items" />
-// </div>
-// <Table
-//   basicData={basicData}
-//   provinces={provinces}
-//   className="flex__items"
-// />
-// </div>

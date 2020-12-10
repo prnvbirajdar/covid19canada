@@ -10,3 +10,7 @@
     flex-grow: 1;
   }
 } */
+
+.item__size {
+  max-width: 60% !important;
+}
