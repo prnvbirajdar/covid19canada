@@ -13,6 +13,9 @@ function Table({ basicData, provinces }) {
     lastData[i].name = provinces[i].Name;
   }
 
+  const formatCases = (num) =>
+  num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
+
   return (
       <div className="ui card" id="ui__card">
         <div className="content">
@@ -42,49 +45,49 @@ function Table({ basicData, provinces }) {
                       <b>{data.name}</b>
                     </td>
                     <td className="collapsing" data-label="Cases">
-                      {data.total_cases} <br /> (
-                      {data.change_cases === null ? 0 : data.change_cases}{" "}
+                      {formatCases(data.total_cases)} <br /> (
+                      {data.change_cases === null ? 0 : formatCases(data.change_cases)}{" "}
                       today)
                     </td>
                     <td className="collapsing" data-label="Deaths">
-                      {data.total_fatalities} <br /> (
+                      {formatCases(data.total_fatalities)} <br /> (
                       {data.change_fatalities === null
                         ? 0
-                        : data.change_fatalities}{" "}
+                        : formatCases(data.change_fatalities)}{" "}
                       today)
                     </td>
                     <td className="collapsing" data-label="Active">
-                      {data.total_cases -
+                      {formatCases(data.total_cases -
                         data.total_recoveries -
-                        data.total_fatalities}{" "}
+                        data.total_fatalities)}{" "}
                       <br />(
                       {data.change_cases -
                         data.change_recoveries -
                         data.change_fatalities ===
                       null
                         ? 0
-                        : data.change_cases -
+                        : formatCases(data.change_cases -
                           data.change_recoveries -
-                          data.change_fatalities}{" "}
+                          data.change_fatalities)}{" "}
                       today)
                     </td>
                     <td className="collapsing" data-label="Recoveries">
-                      {data.total_recoveries} <br /> (
+                      {formatCases(data.total_recoveries)} <br /> (
                       {data.change_recoveries === null
                         ? 0
                         : data.change_recoveries}{" "}
                       today)
                     </td>
                     <td className="collapsing" data-label="Hospitalizations">
-                      {data.total_hospitalizations} <br /> (
+                      {formatCases(data.total_hospitalizations)} <br /> (
                       {data.change_hospitalizations === null
                         ? 0
-                        : data.change_hospitalizations}{" "}
+                        : formatCases(data.change_hospitalizations)}{" "}
                       today)
                     </td>
                     <td className="collapsing" data-label="Cases">
-                      {data.total_tests} <br /> (
-                      {data.change_tests === null ? 0 : data.change_tests}{" "}
+                      {formatCases(data.total_tests)} <br /> (
+                      {data.change_tests === null ? 0 : formatCases(data.change_tests)}{" "}
                       today)
                     </td>
                   </tr>

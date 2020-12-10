@@ -33,12 +33,14 @@ function UpdateDate({ date }) {
 
   const dateStr = `${month} ${day}, ${year}`;
   return (
-    <div style={{ padding: "0.5rem 0 2rem 1rem" }}>
-      <b>
-        Last Updated -{" "}
-        {`${timeString}  ${dateStr}
+    <div style={{ padding: "1rem 0 2rem 1rem" }}>
+      <h4>
+        <b>
+          Last Updated -{" "}
+          {`${timeString}  ${dateStr}
           `}
-      </b>
+        </b>
+      </h4>
     </div>
   );
 }
