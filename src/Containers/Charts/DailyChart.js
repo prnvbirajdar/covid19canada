@@ -106,6 +106,13 @@ function DailyCases({ report, selectedProvince }) {
                   },
                 ],
               },
+              legend: {
+                labels: {
+                  fontSize: 11,
+                  usePointStyle: true,
+                  padding: 15,
+                },
+              },
             }}
           />
         </div>

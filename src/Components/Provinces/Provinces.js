@@ -28,7 +28,7 @@ function Reports({ match }) {
 
   return (
     <div>
-      <h2 className="province__title">
+      <h2 className="province__title" style={{ marginTop: "6rem" }}>
         COVID-19 Data for <br /> {selectedProvince}
       </h2>
       <Header data={latestReport} />

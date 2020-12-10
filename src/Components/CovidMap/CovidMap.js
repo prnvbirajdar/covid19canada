@@ -24,7 +24,7 @@ function CovidMap({ basicData, provinces }) {
         <div className="content">
           <MapContainer
             center={[59.933, -99.035684]}
-            zoom={3.5}
+            zoom={3}
             scrollWheelZoom={false}
           >
             <TileLayer url="https://api.mapbox.com/styles/v1/cg709/cki6bfur32hye19o47s7r367b/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw" />
@@ -35,8 +35,8 @@ function CovidMap({ basicData, provinces }) {
                   center={[p.coordinates[0], p.coordinates[1]]}
                   radius={
                     p.total_cases < 200
-                      ? 12 * Math.log(p.total_cases / 10)
-                      : 8 * Math.log(p.total_cases / 10)
+                      ? 8 * Math.log(p.total_cases / 10)
+                      : 5 * Math.log(p.total_cases / 10)
                   }
                   fillOpacity={p.total_cases < 500 ? 0.3 : 0.6}
                   stroke={true}
