@@ -89,115 +89,115 @@ function DoughChart({ basicData }) {
     nbData.total_hospitalizations;
 
   return (
-      <div className="ui card ">
-        <div className="content">
-          <div className="header">Regional COVID-19 Count</div>
-        </div>
-        <div className="content">
-          <Bar
-            data={{
-              labels: [
-                "Central Region",
-                "Prairie Region",
-                "Pacific Region",
-                "Atlantic Region",
-                "Northern Region",
-              ],
-              datasets: [
-                {
-                  label: "Cases",
-                  data: [
-                    centralCases,
-                    prairieCases,
-                    pacificCases,
-                    atlanticCases,
-                    northernCases,
-                  ],
-                  backgroundColor: "rgba(39, 39, 223, 0.35)",
-                  borderColor: "rgba(39, 39, 223, 1)",
-                  borderWidth: 2,
-                },
-                {
-                  label: "Deaths",
-                  data: [
-                    centralFatalities,
-                    prairieFatalities,
-                    pacificFatalities,
-                    atlanticFatalities,
-                    northernFatalities,
-                  ],
-                  backgroundColor: "rgba(222, 79, 79, 0.35)",
-                  borderColor: "rgba(222, 79, 79, 1)",
-                  borderWidth: 2,
-                  hidden: true,
-                },
-                {
-                  label: "Recoveries",
-                  data: [
-                    centralRecoveries,
-                    prairieRecoveries,
-                    pacificRecoveries,
-                    atlanticRecoveries,
-                    northernRecoveries,
-                  ],
-                  backgroundColor: "rgba(36, 219, 36, 0.35)",
-                  borderColor: "rgba(36, 219, 36, 1)",
-                  borderWidth: 2,
-                  hidden: true,
-                },
-                {
-                  label: "Hospitalizations",
-                  data: [
-                    centralHospitalizations,
-                    prairieHospitalizations,
-                    pacificHospitalizations,
-                    atlanticHospitalizations,
-                    northernHospitalizations,
-                  ],
-                  backgroundColor: "rgba(230, 166, 47,0.354)",
-                  borderColor: "rgba(230, 166, 47, 1)",
-                  borderWidth: 2,
-                  hidden: true,
-                },
-              ],
-            }}
-            options={{
-              width: "100%",
-              height: "50vh",
-              maintainAspectRatio: false,
-              responsive: true,
-              title: {
-                display: false,
-                text: "Regioncal Cases",
-              },
-              legend: {
-                labels: {
-                  fontSize: 11,
-                  usePointStyle: true,
-                  padding: 15,
-                },
-              },
-              scales: {
-                xAxes: [
-                  {
-                    gridLines: {
-                      display: false,
-                    },
-                  },
-                ],
-                yAxes: [
-                  {
-                    ticks: {
-                      beginAtZero: true,
-                      maxTicksLimit: 6,
-                    },
-                  },
-                ],
-              },
-            }}
-          />
-        </div>
+    <section className="ui card ">
+      <div className="content">
+        <div className="header">Regional COVID-19 Count</div>
       </div>
+      <div className="content">
+        <Bar
+          data={{
+            labels: [
+              "Central Region",
+              "Prairie Region",
+              "Pacific Region",
+              "Atlantic Region",
+              "Northern Region",
+            ],
+            datasets: [
+              {
+                label: "Cases",
+                data: [
+                  centralCases,
+                  prairieCases,
+                  pacificCases,
+                  atlanticCases,
+                  northernCases,
+                ],
+                backgroundColor: "rgba(39, 39, 223, 0.35)",
+                borderColor: "rgba(39, 39, 223, 1)",
+                borderWidth: 2,
+              },
+              {
+                label: "Deaths",
+                data: [
+                  centralFatalities,
+                  prairieFatalities,
+                  pacificFatalities,
+                  atlanticFatalities,
+                  northernFatalities,
+                ],
+                backgroundColor: "rgba(222, 79, 79, 0.35)",
+                borderColor: "rgba(222, 79, 79, 1)",
+                borderWidth: 2,
+                hidden: true,
+              },
+              {
+                label: "Recoveries",
+                data: [
+                  centralRecoveries,
+                  prairieRecoveries,
+                  pacificRecoveries,
+                  atlanticRecoveries,
+                  northernRecoveries,
+                ],
+                backgroundColor: "rgba(36, 219, 36, 0.35)",
+                borderColor: "rgba(36, 219, 36, 1)",
+                borderWidth: 2,
+                hidden: true,
+              },
+              {
+                label: "Hospitalizations",
+                data: [
+                  centralHospitalizations,
+                  prairieHospitalizations,
+                  pacificHospitalizations,
+                  atlanticHospitalizations,
+                  northernHospitalizations,
+                ],
+                backgroundColor: "rgba(230, 166, 47,0.354)",
+                borderColor: "rgba(230, 166, 47, 1)",
+                borderWidth: 2,
+                hidden: true,
+              },
+            ],
+          }}
+          options={{
+            width: "100%",
+            height: "50vh",
+            maintainAspectRatio: false,
+            responsive: true,
+            title: {
+              display: false,
+              text: "Regioncal Cases",
+            },
+            legend: {
+              labels: {
+                fontSize: 11,
+                usePointStyle: true,
+                padding: 15,
+              },
+            },
+            scales: {
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    maxTicksLimit: 6,
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </div>
+    </section>
   );
 }
 

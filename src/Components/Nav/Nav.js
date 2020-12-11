@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Dropdown, MenuItem } from "semantic-ui-react";
+import { Menu, Dropdown } from "semantic-ui-react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 // import {provinces} from '../Api/Api'
@@ -35,8 +35,13 @@ function Nav({ provinces }) {
           {data.map((province) => {
             return (
               <Dropdown.Item key={province.Code} value={province.Code}>
-                <Link to={`/province/${province.Code}`}>
-                  <p style={{ color: "black" }}>{province.Name}</p>
+                <Link
+                  to={`/province/${province.Code}`}
+                  onclick={window.scrollTo(0, 0)}
+                >
+                  <p style={{ color: "black" }}>
+                    <b>{province.Name}</b>
+                  </p>
                 </Link>
               </Dropdown.Item>
             );

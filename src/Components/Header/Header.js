@@ -12,7 +12,7 @@ function Header({ data }) {
     num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
 
   return data === undefined ? null : (
-    <div
+    <main
       class="ui doubling five column centered grid  stackable container"
       id="grid"
     >
@@ -69,7 +69,7 @@ function Header({ data }) {
           today
         </p>
       </div>
-    </div>
+    </main>
   );
 }
 

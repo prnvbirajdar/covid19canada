@@ -22,3 +22,9 @@
 .dropdown {
   z-index: 100;
 }
+
+.fa-shield-virus:hover,
+.fa-shield-virus:focus {
+  color: rgba(240, 99, 99, 0.753) !important;
+  transition: color 0.2s ease-out !important;
+}

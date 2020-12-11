@@ -19,7 +19,7 @@ function CovidMap({ basicData, provinces }) {
     num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
 
   return (
-    <div className="ui card ">
+    <section className="ui card ">
       <div className="content">
         <div className="header">Canada COVID-19 Cases Provincial Map</div>
       </div>
@@ -52,7 +52,9 @@ function CovidMap({ basicData, provinces }) {
                   <br />
                   <span>
                     Active Cases:{" "}
-                    {formatCases(p.total_cases - p.total_recoveries - p.total_fatalities)}
+                    {formatCases(
+                      p.total_cases - p.total_recoveries - p.total_fatalities
+                    )}
                   </span>{" "}
                   <br />
                   <span>Total Cases: {formatCases(p.total_cases)}</span> <br />
@@ -70,7 +72,7 @@ function CovidMap({ basicData, provinces }) {
           })}
         </MapContainer>
       </div>
-    </div>
+    </section>
   );
 }
 

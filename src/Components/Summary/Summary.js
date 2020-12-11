@@ -6,7 +6,6 @@ import DailyChart from "../../Containers/Charts/DailyChart";
 import RegionsChart from "../../Containers/Charts/RegionsChart";
 import Table from "../../Containers/Table/Table";
 import Header from "../Header/Header";
-import "./summary.css";
 import UpdateDate from "../UpdateDate/UpdateDate";
 
 function Summary() {

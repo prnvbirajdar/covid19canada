@@ -19,7 +19,7 @@ function TotalCases({ report, selectedProvince }) {
     recoveries === [] ||
     fatalities === [] ||
     hospitalizations === [] ? null : (
-    <div className="ui card ">
+    <section className="ui card ">
       <div className="content">
         <div className="header">
           Cumulative Count for {selectedProvince ? selectedProvince : "Canada"}
@@ -115,7 +115,7 @@ function TotalCases({ report, selectedProvince }) {
           }}
         />
       </div>
-    </div>
+    </section>
   );
 }
 
