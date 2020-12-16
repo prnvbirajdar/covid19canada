@@ -25,7 +25,9 @@ function Header({ data }) {
           Cases
         </div>
         <div className="value" style={casesColor}>
-          {formatCases(data.total_cases)}{" "}
+          <p>
+            <b>{formatCases(data.total_cases)}</b>
+          </p>
           {/*converts num to string and adds commas*/}
         </div>
         <p className="today--style" style={casesColor}>
@@ -37,7 +39,9 @@ function Header({ data }) {
           Deaths
         </div>
         <div className="value" style={deathsColor}>
-          {formatCases(data.total_fatalities)}
+          <p>
+            <b>{formatCases(data.total_fatalities)}</b>
+          </p>{" "}
         </div>
         <p className="today--style" style={deathsColor}>
           {formatCases(data.change_fatalities)} today
@@ -48,7 +52,9 @@ function Header({ data }) {
           Recoveries
         </div>
         <div className="value" style={recoveredColor}>
-          {formatCases(data.total_recoveries)}
+          <p>
+            <b>{formatCases(data.total_recoveries)}</b>
+          </p>{" "}
         </div>
         <p className="today--style" style={recoveredColor}>
           {formatCases(data.change_recoveries)} today
@@ -59,9 +65,14 @@ function Header({ data }) {
           Active
         </div>
         <div className="value" style={activeColor}>
-          {formatCases(
-            data.total_cases - data.total_recoveries - data.total_fatalities
-          )}
+          <p>
+            <b>
+              {" "}
+              {formatCases(
+                data.total_cases - data.total_recoveries - data.total_fatalities
+              )}{" "}
+            </b>
+          </p>
         </div>
         <p className="today--style" style={activeColor}>
           {formatCases(
@@ -75,7 +86,9 @@ function Header({ data }) {
           Vaccinated
         </div>
         <div className="value" style={vaccinatedColor}>
-          {formatCases(data.total_vaccinations)}
+          <p>
+            <b>{formatCases(data.total_vaccinations)}</b>
+          </p>{" "}
         </div>
         <p className="today--style" style={vaccinatedColor}>
           {formatCases(data.change_vaccinations)} today
