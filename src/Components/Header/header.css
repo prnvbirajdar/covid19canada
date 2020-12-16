@@ -25,6 +25,10 @@
   background-color: rgba(219, 41, 41, 0.3);
 }
 
+.header__div--vaccinations {
+  background-color: rgb(20, 20, 20, 0.3);
+}
+
 @media only screen and (max-width: 767px) {
   #grid.ui.stackable.grid {
     width: auto;

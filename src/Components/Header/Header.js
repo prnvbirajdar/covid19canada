@@ -7,13 +7,14 @@ function Header({ data }) {
   const deathsColor = { color: "#db2828" };
   const recoveredColor = { color: "#0d7926" };
   const activeColor = { color: "#73268d" };
+  const vaccinatedColor = { color: "#141414" };
 
   const formatCases = (num) =>
     num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
 
   return data === undefined ? null : (
     <main
-      class="ui doubling five column centered grid  stackable container"
+      class="ui doubling six column centered grid stackable container"
       id="grid"
     >
       <div
@@ -67,6 +68,17 @@ function Header({ data }) {
             data.change_cases - data.change_recoveries - data.change_fatalities
           )}{" "}
           today
+        </p>
+      </div>
+      <div className="ui column small statistic header__div header__div--vaccinations">
+        <div className="label" style={vaccinatedColor}>
+          Vaccinations
+        </div>
+        <div className="value" style={vaccinatedColor}>
+          {formatCases(data.total_vaccinations)}
+        </div>
+        <p className="today--style" style={vaccinatedColor}>
+          {formatCases(data.change_vaccinations)} today
         </p>
       </div>
     </main>
