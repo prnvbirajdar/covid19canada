@@ -14,89 +14,105 @@ function Table({ basicData, provinces }) {
   }
 
   const formatCases = (num) =>
-  num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
+    num ? num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "0";
 
   return (
-      <div className="ui card" id="ui__card">
-        <div className="content">
-          <div className="header">COVID-19 Data by Province</div>
-        </div>
-        <div className="content " style={{ overflowX: "auto" }}>
-          <table
-            class="ui selectable celled table unstackable seven column"
-            id="ui__table"
-          >
-            <thead>
-              <tr>
-                <th>Province</th>
-                <th>Cases</th>
-                <th>Deaths</th>
-                <th>Active</th>
-                <th>Hospitalizations</th>
-                <th>Recoveries</th>
-                <th>Tests</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lastData.map((data) => {
-                return (
-                  <tr>
-                    <td className="collapsing" data-label="Province">
-                      <b>{data.name}</b>
-                    </td>
-                    <td className="collapsing" data-label="Cases">
-                      {formatCases(data.total_cases)} <br /> (
-                      {data.change_cases === null ? 0 : formatCases(data.change_cases)}{" "}
-                      today)
-                    </td>
-                    <td className="collapsing" data-label="Deaths">
-                      {formatCases(data.total_fatalities)} <br /> (
-                      {data.change_fatalities === null
-                        ? 0
-                        : formatCases(data.change_fatalities)}{" "}
-                      today)
-                    </td>
-                    <td className="collapsing" data-label="Active">
-                      {formatCases(data.total_cases -
-                        data.total_recoveries -
-                        data.total_fatalities)}{" "}
-                      <br />(
-                      {data.change_cases -
-                        data.change_recoveries -
-                        data.change_fatalities ===
-                      null
-                        ? 0
-                        : formatCases(data.change_cases -
-                          data.change_recoveries -
-                          data.change_fatalities)}{" "}
-                      today)
-                    </td>
-                    <td className="collapsing" data-label="Recoveries">
-                      {formatCases(data.total_recoveries)} <br /> (
-                      {data.change_recoveries === null
-                        ? 0
-                        : data.change_recoveries}{" "}
-                      today)
-                    </td>
-                    <td className="collapsing" data-label="Hospitalizations">
-                      {formatCases(data.total_hospitalizations)} <br /> (
-                      {data.change_hospitalizations === null
-                        ? 0
-                        : formatCases(data.change_hospitalizations)}{" "}
-                      today)
-                    </td>
-                    <td className="collapsing" data-label="Cases">
-                      {formatCases(data.total_tests)} <br /> (
-                      {data.change_tests === null ? 0 : formatCases(data.change_tests)}{" "}
-                      today)
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+    <div className="ui card" id="ui__card">
+      <div className="content">
+        <div className="header">COVID-19 Data by Province</div>
       </div>
+      <div className="content " style={{ overflowX: "auto" }}>
+        <table
+          class="ui selectable celled table unstackable seven column"
+          id="ui__table"
+        >
+          <thead>
+            <tr>
+              <th>Province</th>
+              <th>Cases</th>
+              <th>Deaths</th>
+              <th>Active</th>
+              <th>Vaccinated</th>
+              <th>Recoveries</th>
+              <th>Hospitalizations</th>
+              <th>Tests</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lastData.map((data) => {
+              return (
+                <tr>
+                  <td className="collapsing" data-label="Province">
+                    <b>{data.name}</b>
+                  </td>
+                  <td className="collapsing" data-label="Cases">
+                    {formatCases(data.total_cases)} <br /> (
+                    {data.change_cases === null
+                      ? 0
+                      : formatCases(data.change_cases)}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Deaths">
+                    {formatCases(data.total_fatalities)} <br /> (
+                    {data.change_fatalities === null
+                      ? 0
+                      : formatCases(data.change_fatalities)}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Active">
+                    {formatCases(
+                      data.total_cases -
+                        data.total_recoveries -
+                        data.total_fatalities
+                    )}{" "}
+                    <br />(
+                    {data.change_cases -
+                      data.change_recoveries -
+                      data.change_fatalities ===
+                    null
+                      ? 0
+                      : formatCases(
+                          data.change_cases -
+                            data.change_recoveries -
+                            data.change_fatalities
+                        )}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Vaccinated">
+                    {formatCases(data.total_vaccinations)} <br /> (
+                    {data.change_tests === null
+                      ? 0
+                      : formatCases(data.change_vaccinations)}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Recoveries">
+                    {formatCases(data.total_recoveries)} <br /> (
+                    {data.change_recoveries === null
+                      ? 0
+                      : data.change_recoveries}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Hospitalizations">
+                    {formatCases(data.total_hospitalizations)} <br /> (
+                    {data.change_hospitalizations === null
+                      ? 0
+                      : formatCases(data.change_hospitalizations)}{" "}
+                    today)
+                  </td>
+                  <td className="collapsing" data-label="Cases">
+                    {formatCases(data.total_tests)} <br /> (
+                    {data.change_tests === null
+                      ? 0
+                      : formatCases(data.change_tests)}{" "}
+                    today)
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 
