@@ -14,7 +14,7 @@ function Summary() {
   const [date, setDate] = useState("");
   //state for provincial reports
   const [report, setReport] = useState([]);
-  //state for tables, doughchart and maps
+  //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
 
   const fetchData = async () => {
@@ -28,7 +28,7 @@ function Summary() {
       .get(`/reports`)
       .catch((err) => console.log(`reports error: ${err}`));
 
-    //api call to get the data for the doughnut graph, map data and table
+    //api call to get the data for the regions graph, map data and table
     //provinceURL goes over all the province array and give a promise containing urls for each province
     const provinceURL = provinces.map((p) =>
       instance.get(`/reports/province/${p.Code}`)

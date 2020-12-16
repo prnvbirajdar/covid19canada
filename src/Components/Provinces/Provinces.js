@@ -15,6 +15,8 @@ function Reports({ match }) {
         .catch((err) => console.log(`province error: ${err}`));
       setReport(response.data.data);
 
+      console.log(response);
+
       return response;
     };
     fetchData();
