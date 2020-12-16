@@ -40,6 +40,10 @@ function DoughChart({ basicData }) {
     abData.total_hospitalizations +
     mbData.total_hospitalizations +
     skData.total_hospitalizations;
+  const prairieVaccinated =
+    abData.total_vaccinations +
+    mbData.total_vaccinations +
+    skData.total_vaccinations;
 
   //central region info
   const centralCases = onData.total_cases + qcData.total_cases;
@@ -47,6 +51,8 @@ function DoughChart({ basicData }) {
   const centralRecoveries = onData.total_recoveries + qcData.total_recoveries;
   const centralHospitalizations =
     onData.total_hospitalizations + qcData.total_hospitalizations;
+  const centralVaccinated =
+    onData.total_vaccinations + qcData.total_vaccinations;
 
   //northern region info
   const northernCases =
@@ -59,12 +65,17 @@ function DoughChart({ basicData }) {
     ytData.total_hospitalizations +
     ntData.total_hospitalizations +
     nuData.total_hospitalizations;
+  const northernVaccinated =
+    ytData.total_vaccinations +
+    ntData.total_vaccinations +
+    nuData.total_vaccinations;
 
   //pacific region info
   const pacificCases = bcData.total_cases;
   const pacificFatalities = bcData.total_fatalities;
   const pacificRecoveries = bcData.total_recoveries;
   const pacificHospitalizations = bcData.total_hospitalizations;
+  const pacificVaccinated = bcData.total_vaccinations;
 
   //atlantic region info
   const atlanticCases =
@@ -87,6 +98,11 @@ function DoughChart({ basicData }) {
     peData.total_hospitalizations +
     nsData.total_hospitalizations +
     nbData.total_hospitalizations;
+  const atlanticVaccinated =
+    nlData.total_vaccinations +
+    peData.total_vaccinations +
+    nsData.total_vaccinations +
+    nbData.total_vaccinations;
 
   return (
     <section className="ui card ">
@@ -156,6 +172,20 @@ function DoughChart({ basicData }) {
                 ],
                 backgroundColor: "rgba(230, 166, 47,0.354)",
                 borderColor: "rgba(230, 166, 47, 1)",
+                borderWidth: 2,
+                hidden: true,
+              },
+              {
+                label: "Vaccinated",
+                data: [
+                  centralVaccinated,
+                  prairieVaccinated,
+                  pacificVaccinated,
+                  atlanticVaccinated,
+                  northernVaccinated,
+                ],
+                backgroundColor: "rgba(20, 20, 20,0.354)",
+                borderColor: "rgba(20, 20, 20, 1)",
                 borderWidth: 2,
                 hidden: true,
               },
