@@ -72,7 +72,7 @@ function Header({ data }) {
       </div>
       <div className="ui column small statistic header__div header__div--vaccinations">
         <div className="label" style={vaccinatedColor}>
-          Vaccinations
+          Vaccinated
         </div>
         <div className="value" style={vaccinatedColor}>
           {formatCases(data.total_vaccinations)}

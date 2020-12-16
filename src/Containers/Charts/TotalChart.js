@@ -13,12 +13,16 @@ function TotalCases({ report, selectedProvince }) {
   const hospitalizations = report.map((t) =>
     t.total_hospitalizations === null ? 0 : t.total_hospitalizations
   );
+  const vaccinated = report.map((t) =>
+    t.total_vaccinations === null ? 0 : t.total_vaccinations
+  );
 
   return report === [] ||
     total === [] ||
     recoveries === [] ||
     fatalities === [] ||
-    hospitalizations === [] ? null : (
+    hospitalizations === [] ||
+    vaccinated === [] ? null : (
     <section className="ui card ">
       <div className="content">
         <div className="header">
@@ -64,6 +68,15 @@ function TotalCases({ report, selectedProvince }) {
                 backgroundColor: "rgba(230, 166, 47,0.354)",
                 borderWidth: 2,
                 borderColor: "orange",
+                pointRadius: 0,
+                hidden: true,
+              },
+              {
+                label: "Vaccinated",
+                data: vaccinated,
+                backgroundColor: "rgba(20,20,20,0.354)",
+                borderWidth: 2,
+                borderColor: "#141414",
                 pointRadius: 0,
                 hidden: true,
               },
