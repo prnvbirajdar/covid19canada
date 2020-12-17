@@ -6,17 +6,21 @@ import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
 import { instance, provinces } from "../Api/Api";
 import Header from "../Header/Header";
-import "./provinces.css";
+// import "./provinces.css";
 
 function Reports({ match }) {
   const [report, setReport] = useState([]);
 
+  console.log(match.params.code);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await instance
-        .get(`/reports${match.url}`)
+        .get(`/reports/${match.params.code}`)
         .catch((err) => console.log(`province error: ${err}`));
       setReport(response.data.data);
+
+      console.log(response);
 
       return response;
     };

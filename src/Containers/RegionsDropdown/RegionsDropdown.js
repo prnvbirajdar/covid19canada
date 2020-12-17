@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -9,14 +9,16 @@ function RegionsDropdown({ provinces, match }) {
 
   console.log(selectedProv);
 
-  return (
+  const healthRegions = selectedProv.healthRegions;
+
+  return selectedProv === [] ? null : (
     <Dropdown
       placeholder="Select Region"
       className="link item dropdown"
-      style={{ paddingRight: "5rem", color: "white" }}
+      style={{ paddingRight: "5rem", color: "#141414" }}
     >
       <Dropdown.Menu>
-        {selectedProv.healthRegions.map((region) => {
+        {healthRegions.map((region) => {
           return (
             <Dropdown.Item key={region.hr_uid} value={region.engname}>
               <Link
