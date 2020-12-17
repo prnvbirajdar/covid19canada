@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import RegionsDropdown from "../../Containers/RegionsDropdown/RegionsDropdown";
+// import { Dropdown } from "semantic-ui-react";
+
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
 import { instance, provinces } from "../Api/Api";
@@ -37,6 +40,8 @@ function Reports({ match }) {
         COVID-19 Data for {selectedProvince}
       </h1>
       <Header data={latestReport} />
+      <RegionsDropdown provinces={provinces} match={match} />
+
       <div className="ui four column centered stackable grid container item__size">
         <TotalChart
           className="column"
@@ -54,3 +59,26 @@ function Reports({ match }) {
 }
 
 export default Reports;
+
+// <Dropdown
+// placeholder="Select Province"
+// className="link item dropdown"
+// style={{ paddingRight: "5rem", color: "white" }}
+// >
+// <Dropdown.Menu>
+//   {data.map((province) => {
+//     return (
+//       <Dropdown.Item key={province.Code} value={province.Code}>
+//         <Link
+//           to={`/province/${province.Code}`}
+//           onclick={window.scrollTo(0, 0)}
+//         >
+//           <p style={{ color: "black" }}>
+//             <b>{province.Name}</b>
+//           </p>
+//         </Link>
+//       </Dropdown.Item>
+//     );
+//   })}
+// </Dropdown.Menu>
+// </Dropdown>

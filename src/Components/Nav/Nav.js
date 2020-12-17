@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { Menu, Dropdown } from "semantic-ui-react";
 import "./nav.css";
 import { Link } from "react-router-dom";
-// import {provinces} from '../Api/Api'
 
 function Nav({ provinces }) {
-  const [data] = useState(provinces);
-
-  // const [value, setValue] = useState('')
+  //const [data] = useState(provinces);
 
   const dropdownOptions = provinces.map((province) => ({
     key: province.Code,
@@ -32,7 +29,7 @@ function Nav({ provinces }) {
         style={{ paddingRight: "5rem", color: "white" }}
       >
         <Dropdown.Menu>
-          {data.map((province) => {
+          {provinces.map((province) => {
             return (
               <Dropdown.Item key={province.Code} value={province.Code}>
                 <Link
