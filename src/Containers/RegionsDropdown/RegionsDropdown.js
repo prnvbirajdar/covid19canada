@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 function RegionsDropdown({ provinces, match }) {
+  const [prov, setProv] = useState(null);
+
   const selectedProv = provinces.find(
     (prov) => prov.Code === match.params.code
   );
 
-  console.log(selectedProv);
+  setProv(selectedProv);
 
-  const healthRegions = selectedProv.healthRegions;
+  //   const healthRegions = prov.healthRegions;
+
+  //trying to figure this thing out
+
+  console.log(prov);
+
+  console.log(prov.healthRegions);
 
   return selectedProv === [] ? null : (
     <Dropdown
@@ -18,7 +26,7 @@ function RegionsDropdown({ provinces, match }) {
       style={{ paddingRight: "5rem", color: "#141414" }}
     >
       <Dropdown.Menu>
-        {healthRegions.map((region) => {
+        {prov.healthRegions.map((region) => {
           return (
             <Dropdown.Item key={region.hr_uid} value={region.engname}>
               <Link
