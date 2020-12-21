@@ -13,8 +13,6 @@ function RegionsDropdown({ provinces, match }) {
 
   //   const healthRegions = prov.healthRegions;
 
-  //trying to figure this thing out
-
   console.log(prov);
 
   console.log(prov.healthRegions);
