@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -22,11 +22,9 @@ function RegionsDropdown({ provinces, match }) {
 
   console.log(regions);
 
-  // //   const healthRegions = prov.healthRegions;
 
   // console.log(prov);
 
-  // console.log(prov.healthRegions);
 
   const regionOptions = regions.map((region) => ({
     key: region.hr_uid,
@@ -35,16 +33,20 @@ function RegionsDropdown({ provinces, match }) {
   }));
 
   return (
-    <Dropdown
-      placeholder="Select Region"
-      search
-      selection
-      options={regionOptions}
-    />
+    <React.Fragment>
+      <Dropdown placeholder="Select Region" selection options={regionOptions} />
+
+      <p>option: {regionOptions.text}</p>
+    </React.Fragment>
   );
 }
 
 export default RegionsDropdown;
+
+// <Link
+//         to={`/regions/${regionOptions.value}`}
+//         onclick={window.scrollTo(0, 0)}
+//       />
 
 // selectedProv === [] ? null : (
 //   <Dropdown
@@ -56,10 +58,10 @@ export default RegionsDropdown;
 //       {prov.healthRegions.map((region) => {
 //         return (
 //           <Dropdown.Item key={region.hr_uid} value={region.engname}>
-//             <Link
-//               to={`/regions/${region.hr_uid}`}
-//               onclick={window.scrollTo(0, 0)}
-//             >
+// <Link
+//   to={`/regions/${region.hr_uid}`}
+//   onclick={window.scrollTo(0, 0)}
+// >
 //               <p style={{ color: "black" }}>
 //                 <b>{region.engname}</b>
 //               </p>
