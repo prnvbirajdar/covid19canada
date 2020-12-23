@@ -4,13 +4,6 @@ import "./nav.css";
 import { Link } from "react-router-dom";
 
 function Nav({ provinces }) {
-  //const [data] = useState(provinces);
-
-  const dropdownOptions = provinces.map((province) => ({
-    key: province.Code,
-    text: province.Name,
-    value: province.Code,
-  }));
 
   return (
     <Menu className="nav">
