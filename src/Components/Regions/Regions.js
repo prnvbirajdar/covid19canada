@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import RegionsDropdown from "../../Containers/RegionsDropdown/RegionsDropdown";
-// import { Dropdown } from "semantic-ui-react";
 
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
