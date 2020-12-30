@@ -3,9 +3,8 @@ import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 function RegionsDropdown({ provinces, match }) {
-  //const [prov, setProv] = useState(null);
   const [regions, setRegions] = useState([]);
-  const [region, setRegion] = useState("");
+  //const [region, setRegion] = useState("");
 
   const selectedProv = provinces.find(
     (prov) => prov.Code === match.params.code
@@ -13,7 +12,7 @@ function RegionsDropdown({ provinces, match }) {
 
   useEffect(() => {
     setRegions(selectedProv.healthRegions);
-  }, [selectedProv.healthRegions]);
+  }, [selectedProv]);
 
   const regionOptions = regions.map((region) => ({
     key: region.hr_uid,
@@ -21,22 +20,11 @@ function RegionsDropdown({ provinces, match }) {
     value: region.hr_uid,
   }));
 
-  const handledropdown = (event, data) => setRegion(data.value);
+  // const handledropdown = (event, data) => setRegion(data.value);
 
-  // console.log(region);
-
-  // const linkFunk = () => (
-  //   <Link to={`/regions/${region}`} onclick={window.scrollTo(0, 0)}></Link>
-  // );
-
-  return (
+  return selectedProv === null || undefined ? null : (
     <React.Fragment>
-      <Dropdown
-        placeholder="Select Region"
-        selection
-        options={regionOptions}
-        onChange={handledropdown}
-      >
+      <Dropdown placeholder="Select Region" selection options={regionOptions}>
         <Dropdown.Menu>
           {regions.map((region) => {
             return (
