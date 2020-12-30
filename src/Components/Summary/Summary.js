@@ -71,21 +71,21 @@ function Summary() {
         <UpdateDate date={date} />
         <div className="ui four column centered stackable grid container item__size">
           <CovidMap
-            className="column "
+            className="column"
             basicData={basicData}
             provinces={provinces}
           />
-          <TotalChart className="column " report={report} />
+          <TotalChart className="column" report={report} />
         </div>
         <div className="ui four column centered stackable grid container item__size">
-          <DailyChart className="column " report={report} />
-          <RegionsChart className="column " basicData={basicData} />
+          <DailyChart className="column" report={report} />
+          <RegionsChart className="column" basicData={basicData} />
         </div>
         <div className="ui four column centered stackable grid container item__size">
           <Table
             basicData={basicData}
             provinces={provinces}
-            className="column "
+            className="column"
           />
         </div>
       </div>

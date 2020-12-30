@@ -82,7 +82,7 @@ function Header({ data }) {
         </p>
       </div>
 
-      {data.total_vaccinations === 0 || null ? (
+      {data.total_vaccinations === null ? (
         <div></div>
       ) : (
         <div className="ui column small statistic header__div header__div--vaccinations">
