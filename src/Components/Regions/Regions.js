@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import RegionsDropdown from "../../Containers/RegionsDropdown/RegionsDropdown";
 
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
-import { instance, provinces } from "../Api/Api";
+import { instance } from "../Api/Api";
 import Header from "../Header/Header";
-// import "./provinces.css";
 
 function Regions({ match, location }) {
   const [report, setReport] = useState([]);

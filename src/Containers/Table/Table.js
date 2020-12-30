@@ -1,5 +1,4 @@
 import React from "react";
-// import { provinces} from '../../Components/Api/Api'
 
 function Table({ basicData, provinces }) {
   //get the data array from the main object
@@ -79,11 +78,14 @@ function Table({ basicData, provinces }) {
                     today)
                   </td>
                   <td className="collapsing" data-label="Vaccinated">
-                    {formatCases(data.total_vaccinations)} <br /> (
-                    {data.change_tests === null
-                      ? 0
-                      : formatCases(data.change_vaccinations)}{" "}
-                    today)
+                    <b>
+                      {" "}
+                      {formatCases(data.total_vaccinations)} <br /> (
+                      {data.change_tests === null
+                        ? 0
+                        : formatCases(data.change_vaccinations)}{" "}
+                      today){" "}
+                    </b>
                   </td>
                   <td className="collapsing" data-label="Recoveries">
                     {formatCases(data.total_recoveries)} <br /> (
