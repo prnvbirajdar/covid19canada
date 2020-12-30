@@ -59,7 +59,11 @@ function Summary() {
       <div>
         <h1
           className="province__title"
-          style={{ marginTop: "5.5rem", padding: "0.75rem" }}
+          style={{
+            marginTop: "5.5rem",
+            padding: "0.75rem",
+            textAlign: "center",
+          }}
         >
           COVID-19 Data for Canada
         </h1>
