@@ -22,7 +22,7 @@ function Table({ basicData, provinces }) {
       </div>
       <div className="content " style={{ overflowX: "auto" }}>
         <table
-          class="ui selectable celled table unstackable seven column"
+          className="ui selectable celled table unstackable seven column"
           id="ui__table"
         >
           <thead>
@@ -38,9 +38,9 @@ function Table({ basicData, provinces }) {
             </tr>
           </thead>
           <tbody>
-            {lastData.map((data) => {
+            {lastData.map((data, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   <td className="collapsing" data-label="Province">
                     <b>{data.name}</b>
                   </td>

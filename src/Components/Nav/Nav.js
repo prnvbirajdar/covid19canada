@@ -9,7 +9,7 @@ function Nav({ provinces }) {
       <Menu.Item>
         <Link to="/">
           <i
-            class="fas fa-shield-virus"
+            className="fas fa-shield-virus"
             style={{ fontSize: "3rem", color: "white" }}
           ></i>
         </Link>
@@ -31,7 +31,7 @@ function Nav({ provinces }) {
               <Dropdown.Item key={province.Code} value={province.Name}>
                 <Link
                   to={`/province/${province.Code}`}
-                  onclick={window.scrollTo(0, 0)}
+                  onClick={window.scrollTo(0, 0)}
                 >
                   <p style={{ color: "black" }}>
                     <b>{province.Name}</b>

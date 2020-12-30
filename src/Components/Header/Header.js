@@ -14,7 +14,7 @@ function Header({ data }) {
 
   return data === undefined ? null : (
     <main
-      class="ui doubling six column centered grid stackable container"
+      className="ui doubling six column centered grid stackable container"
       id="grid"
     >
       <div

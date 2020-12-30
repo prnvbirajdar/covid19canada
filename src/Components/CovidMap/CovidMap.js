@@ -44,6 +44,7 @@ function CovidMap({ basicData, provinces }) {
                 stroke={true}
                 weight="2"
                 color="red"
+                key={p.name}
               >
                 <Tooltip direction="right" opacity={1}>
                   <span>

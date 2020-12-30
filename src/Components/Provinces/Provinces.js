@@ -10,8 +10,6 @@ import "./provinces.css";
 function Provinces({ match }) {
   const [report, setReport] = useState([]);
 
-  console.log(match);
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await instance
@@ -29,8 +27,6 @@ function Provinces({ match }) {
   const selectedProvince = provinces.map((p) =>
     p.Code === match.params.code ? p.Name : null
   );
-
-  console.log(selectedProvince);
 
   return (
     <div>

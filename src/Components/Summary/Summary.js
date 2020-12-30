@@ -17,37 +17,37 @@ function Summary() {
   //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
 
-  const fetchData = async () => {
-    //api call to get the main data
-    const response = await instance
-      .get("/summary")
-      .catch((err) => console.log(`summary error: ${err}`));
-
-    //api call to get the data for all the line graphs
-    const res = await instance
-      .get(`/reports`)
-      .catch((err) => console.log(`reports error: ${err}`));
-
-    //api call to get the data for the regions graph, map data and table
-    //provinceURL goes over all the province array and give a promise containing urls for each province
-    const provinceURL = provinces.map((p) =>
-      instance.get(`/reports/province/${p.Code}`)
-    );
-
-    //resp resolves the promise and gives the array data for each province
-    const resp = await Promise.all(provinceURL).catch((err) =>
-      console.log(`province data error: ${err}`)
-    );
-
-    setBasicData(resp);
-    setReport(res.data.data);
-    setData(response.data.data[0]);
-    setDate(response.data.last_updated);
-
-    return { response, res, resp };
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      //api call to get the main data
+      const response = await instance
+        .get("/summary")
+        .catch((err) => console.log(`summary error: ${err}`));
+
+      //api call to get the data for all the line graphs
+      const res = await instance
+        .get(`/reports`)
+        .catch((err) => console.log(`reports error: ${err}`));
+
+      //api call to get the data for the regions graph, map data and table
+      //provinceURL goes over all the province array and give a promise containing urls for each province
+      const provinceURL = provinces.map((p) =>
+        instance.get(`/reports/province/${p.Code}`)
+      );
+
+      //resp resolves the promise and gives the array data for each province
+      const resp = await Promise.all(provinceURL).catch((err) =>
+        console.log(`province data error: ${err}`)
+      );
+
+      setBasicData(resp);
+      setReport(res.data.data);
+      setData(response.data.data[0]);
+      setDate(response.data.last_updated);
+
+      return { response, res, resp };
+    };
+
     fetchData();
   }, []);
 

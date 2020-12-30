@@ -47,7 +47,7 @@ function RegionsDropdown({ provinces, match }) {
                       pathname: `/regions/${region.hr_uid}`,
                       state: region.engname,
                     }}
-                    onclick={window.scrollTo(0, 0)}
+                    onClick={window.scrollTo(0, 0)}
                   >
                     <p style={{ color: "black" }}>
                       <b>{region.engname}</b>
