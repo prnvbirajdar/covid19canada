@@ -1,6 +1,6 @@
 # COVID-19 Dashboard for Canada
 
-Demo:
+Demo: https://covid19ca.netlify.app/
 
 This dashboard provides up-to-date information about the COVID-19 outbreak in Canada and its provinces and regions. It was created with React and it uses the COVID-19 tracker API (https://api.covid19tracker.ca/).
 

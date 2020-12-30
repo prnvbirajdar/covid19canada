@@ -8,8 +8,6 @@ import Header from "../Header/Header";
 function Regions({ match, location }) {
   const [report, setReport] = useState([]);
 
-  console.log(match);
-
   useEffect(() => {
     const fetchData = async () => {
       const response = await instance
@@ -17,16 +15,12 @@ function Regions({ match, location }) {
         .catch((err) => console.log(`province error: ${err}`));
       setReport(response.data.data);
 
-      console.log(response);
-
       return response;
     };
     fetchData();
   }, [match]);
 
   const latestReport = report[report.length - 1];
-
-  console.log(location.state);
 
   const selectedProvince = location.state;
 

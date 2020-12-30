@@ -81,19 +81,24 @@ function Header({ data }) {
           today
         </p>
       </div>
-      <div className="ui column small statistic header__div header__div--vaccinations">
-        <div className="label" style={vaccinatedColor}>
-          Vaccinated
+
+      {data.total_vaccinations === 0 || null ? (
+        <div></div>
+      ) : (
+        <div className="ui column small statistic header__div header__div--vaccinations">
+          <div className="label" style={vaccinatedColor}>
+            Vaccinated
+          </div>
+          <div className="value" style={vaccinatedColor}>
+            <p>
+              <b>{formatCases(data.total_vaccinations)}</b>
+            </p>{" "}
+          </div>
+          <p className="today--style" style={vaccinatedColor}>
+            {formatCases(data.change_vaccinations)} today
+          </p>
         </div>
-        <div className="value" style={vaccinatedColor}>
-          <p>
-            <b>{formatCases(data.total_vaccinations)}</b>
-          </p>{" "}
-        </div>
-        <p className="today--style" style={vaccinatedColor}>
-          {formatCases(data.change_vaccinations)} today
-        </p>
-      </div>
+      )}
     </main>
   );
 }
