@@ -22,29 +22,44 @@ function RegionsDropdown({ provinces, match }) {
   }));
 
   return selectedProv === null || undefined ? null : (
-    <React.Fragment>
-      <Dropdown placeholder="Select Region" selection options={regionOptions}>
-        <Dropdown.Menu>
-          {regions.map((region) => {
-            return (
-              <Dropdown.Item key={region.hr_uid} value={region.engname}>
-                <Link
-                  to={{
-                    pathname: `/regions/${region.hr_uid}`,
-                    state: region.engname,
-                  }}
-                  onclick={window.scrollTo(0, 0)}
-                >
-                  <p style={{ color: "black" }}>
-                    <b>{region.engname}</b>
-                  </p>
-                </Link>
-              </Dropdown.Item>
-            );
-          })}
-        </Dropdown.Menu>
-      </Dropdown>
-    </React.Fragment>
+    <section className="regions__dropdown-section">
+      <div className="regions__dropdown-div">
+        <Dropdown
+          text="Select Region"
+          selection
+          options={regionOptions}
+          className="regions__dropdown"
+          style={{
+            marginLeft: "2em",
+            marginTop: "1em",
+            backgroundColor: "rgb(150, 150, 150)",
+            color: "black",
+            fontWeight: "700",
+            fontSize: "1.05rem",
+          }}
+        >
+          <Dropdown.Menu>
+            {regions.map((region) => {
+              return (
+                <Dropdown.Item key={region.hr_uid} value={region.engname}>
+                  <Link
+                    to={{
+                      pathname: `/regions/${region.hr_uid}`,
+                      state: region.engname,
+                    }}
+                    onclick={window.scrollTo(0, 0)}
+                  >
+                    <p style={{ color: "black" }}>
+                      <b>{region.engname}</b>
+                    </p>
+                  </Link>
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+    </section>
   );
 }
 

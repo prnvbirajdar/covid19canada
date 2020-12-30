@@ -18,7 +18,12 @@ function Nav({ provinces }) {
       <Dropdown
         placeholder="Select Province"
         className="link item dropdown"
-        style={{ paddingRight: "5rem", color: "white" }}
+        style={{
+          paddingRight: "5rem",
+          color: "white",
+          fontWeight: "700",
+          fontSize: "1.05rem",
+        }}
       >
         <Dropdown.Menu>
           {provinces.map((province) => {
