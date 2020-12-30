@@ -7,10 +7,15 @@ import { instance, provinces } from "../Api/Api";
 import Header from "../Header/Header";
 import "./provinces.css";
 
-function Reports({ match }) {
+function Provinces({ match }) {
   const [report, setReport] = useState([]);
+  //const [provinceUrl, setProvinceUrl] = useState("");
+
+  console.log(match.url);
 
   useEffect(() => {
+    // setProvinceUrl(match.url);
+
     const fetchData = async () => {
       const response = await instance
         .get(`/reports${match.url}`)
@@ -20,7 +25,9 @@ function Reports({ match }) {
       return response;
     };
     fetchData();
-  }, [match.url]);
+  }, []);
+
+  // match.url, provinceUrl
 
   const latestReport = report[report.length - 1];
 
@@ -55,4 +62,4 @@ function Reports({ match }) {
   );
 }
 
-export default Reports;
+export default Provinces;

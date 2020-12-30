@@ -7,7 +7,7 @@ import { instance, provinces } from "../Api/Api";
 import Header from "../Header/Header";
 // import "./provinces.css";
 
-function Reports({ match }) {
+function Regions({ match }) {
   //const [report, setReport] = useState([]);
 
   console.log(match);
@@ -58,7 +58,7 @@ function Reports({ match }) {
   );
 }
 
-export default Reports;
+export default Regions;
 
 // function Reports({ match }) {
 //   const [report, setReport] = useState([]);

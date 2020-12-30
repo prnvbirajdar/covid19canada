@@ -3,15 +3,17 @@ import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 function RegionsDropdown({ provinces, match }) {
+  // const [prov, setProv] = useState(null);
   const [regions, setRegions] = useState([]);
-  //const [region, setRegion] = useState("");
 
   const selectedProv = provinces.find(
     (prov) => prov.Code === match.params.code
   );
 
   useEffect(() => {
-    setRegions(selectedProv.healthRegions);
+    if (selectedProv) {
+      setRegions(selectedProv.healthRegions);
+    }
   }, [selectedProv]);
 
   const regionOptions = regions.map((region) => ({

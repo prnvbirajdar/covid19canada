@@ -4,7 +4,6 @@ import "./nav.css";
 import { Link } from "react-router-dom";
 
 function Nav({ provinces }) {
-
   return (
     <Menu className="nav">
       <Menu.Item>
@@ -24,7 +23,7 @@ function Nav({ provinces }) {
         <Dropdown.Menu>
           {provinces.map((province) => {
             return (
-              <Dropdown.Item key={province.Code} value={province.Code}>
+              <Dropdown.Item key={province.Code} value={province.Name}>
                 <Link
                   to={`/province/${province.Code}`}
                   onclick={window.scrollTo(0, 0)}
