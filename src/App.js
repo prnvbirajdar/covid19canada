@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimmer, Loader } from "semantic-ui-react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { provinces } from "./Components/Api/Api";
 
 import Nav from "./Components/Nav/Nav";
