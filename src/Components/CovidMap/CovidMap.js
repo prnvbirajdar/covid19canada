@@ -36,8 +36,8 @@ function CovidMap({ basicData, provinces }) {
               <CircleMarker
                 center={[p.coordinates[0], p.coordinates[1]]}
                 radius={
-                  p.total_cases < 200
-                    ? 8 * Math.log(p.total_cases / 10)
+                  p.total_cases < 400
+                    ? 4 * Math.log(p.total_cases / 10)
                     : 5 * Math.log(p.total_cases / 10)
                 }
                 fillOpacity={p.total_cases < 500 ? 0.3 : 0.6}

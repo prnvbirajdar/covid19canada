@@ -9,13 +9,10 @@ import "./provinces.css";
 
 function Provinces({ match }) {
   const [report, setReport] = useState([]);
-  //const [provinceUrl, setProvinceUrl] = useState("");
 
-  console.log(match.url);
+  console.log(match);
 
   useEffect(() => {
-    // setProvinceUrl(match.url);
-
     const fetchData = async () => {
       const response = await instance
         .get(`/reports${match.url}`)
@@ -25,15 +22,15 @@ function Provinces({ match }) {
       return response;
     };
     fetchData();
-  }, []);
-
-  // match.url, provinceUrl
+  }, [match]);
 
   const latestReport = report[report.length - 1];
 
   const selectedProvince = provinces.map((p) =>
     p.Code === match.params.code ? p.Name : null
   );
+
+  console.log(selectedProvince);
 
   return (
     <div>

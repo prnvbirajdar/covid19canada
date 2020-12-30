@@ -3,7 +3,6 @@ import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 function RegionsDropdown({ provinces, match }) {
-  // const [prov, setProv] = useState(null);
   const [regions, setRegions] = useState([]);
 
   const selectedProv = provinces.find(
@@ -22,8 +21,6 @@ function RegionsDropdown({ provinces, match }) {
     value: region.hr_uid,
   }));
 
-  // const handledropdown = (event, data) => setRegion(data.value);
-
   return selectedProv === null || undefined ? null : (
     <React.Fragment>
       <Dropdown placeholder="Select Region" selection options={regionOptions}>
@@ -32,7 +29,10 @@ function RegionsDropdown({ provinces, match }) {
             return (
               <Dropdown.Item key={region.hr_uid} value={region.engname}>
                 <Link
-                  to={`/province/${region.hr_uid}`}
+                  to={{
+                    pathname: `/regions/${region.hr_uid}`,
+                    state: region.engname,
+                  }}
                   onclick={window.scrollTo(0, 0)}
                 >
                   <p style={{ color: "black" }}>
@@ -49,31 +49,3 @@ function RegionsDropdown({ provinces, match }) {
 }
 
 export default RegionsDropdown;
-
-// <Dropdown
-// text="Select Region"
-// className="link item dropdown"
-// style={{
-//   padding: "1rem 3rem 1rem 0.25rem",
-//   border: "1px solid rgba(20, 20, 20, 0.411)",
-//   borderRadius: "5px",
-//   backgroundColor: "rgba(20, 20, 20, 0.1)",
-// }}
-// >
-// <Dropdown.Menu>
-//   {regions.map((region) => {
-//     return (
-//       <Dropdown.Item key={region.hr_uid} value={region.engname}>
-//         <Link
-//           to={`/province/${region.hr_uid}`}
-//           onclick={window.scrollTo(0, 0)}
-//         >
-//           <p style={{ color: "black" }}>
-//             <b>{region.engname}</b>
-//           </p>
-//         </Link>
-//       </Dropdown.Item>
-//     );
-//   })}
-// </Dropdown.Menu>
-// </Dropdown>
