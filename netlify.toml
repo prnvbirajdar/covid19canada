@@ -1,7 +1,14 @@
 [build]
-  functions = "functions"
-  publish = "build"
+functions = "functions"
+publish = "build"
+
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+status = 200
+to = "/index.html"
+
+[[headers]]
+# Define which paths this specific [[headers]] block will cover.
+for = "/*"
+[headers.values]
+Access-Control-Allow-Origin = "*"
