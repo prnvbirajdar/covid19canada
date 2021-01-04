@@ -22,7 +22,9 @@ function Nav({ provinces }) {
           paddingRight: "5rem",
           color: "white",
           fontWeight: "700",
-          fontSize: "1.05rem",
+          fontSize: "1.1rem",
+          backgroundColor: "#131313",
+          borderRadius: "5px",
         }}
       >
         <Dropdown.Menu>
