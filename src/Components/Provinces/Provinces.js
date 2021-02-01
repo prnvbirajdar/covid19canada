@@ -39,7 +39,7 @@ function Provinces({ match }) {
       <Header data={latestReport} />
       <RegionsDropdown provinces={provinces} match={match} />
 
-      <div className="ui four column centered stackable grid container item__size">
+      <div className="ui two column centered stackable grid container item__size">
         <TotalChart
           className="column"
           report={report}
