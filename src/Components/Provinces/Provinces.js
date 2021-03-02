@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RegionsDropdown from "../../Containers/RegionsDropdown/RegionsDropdown";
+import { Dimmer, Loader } from "semantic-ui-react";
 
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
@@ -28,7 +29,11 @@ function Provinces({ match }) {
     p.Code === match.params.code ? p.Name : null
   );
 
-  return (
+  return !report ? (
+    <Dimmer active>
+      <Loader content="Loading" />
+    </Dimmer>
+  ) : (
     <div>
       <h1
         className="province__title"
@@ -41,7 +46,6 @@ function Provinces({ match }) {
       </h1>
       <Header data={latestReport} />
       <RegionsDropdown provinces={provinces} match={match} />
-
       <div className="ui two column centered stackable grid container item__size">
         <TotalChart
           className="column"

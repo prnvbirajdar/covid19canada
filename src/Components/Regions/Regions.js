@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Dimmer, Loader } from "semantic-ui-react";
 import TotalChart from "../../Containers/Charts/TotalChart";
 import DailyChart from "../../Containers/Charts/DailyChart";
 import { instance } from "../Api/Api";
@@ -13,7 +13,7 @@ function Regions({ match, location }) {
       const response = await instance
         .get(`/reports${match.url}`)
         .catch((err) => console.log(`province error: ${err}`));
-      setReport(response.data.data);
+      setReport(response?.data?.data);
 
       return response;
     };
@@ -24,7 +24,11 @@ function Regions({ match, location }) {
 
   const selectedProvince = location.state;
 
-  return (
+  return !report ? (
+    <Dimmer active>
+      <Loader content="Loading" />
+    </Dimmer>
+  ) : (
     <div>
       <h1
         className="province__title"
