@@ -10,22 +10,6 @@ import UpdateDate from "../UpdateDate/UpdateDate";
 
 import { Dimmer, Loader } from "semantic-ui-react";
 
-// import { useQuery } from "react-query";
-
-// //api call to get the summary data
-// const fetchSummaryInfo = async () => {
-//   try {
-//     const response = await instance.get("/summary");
-//     return response
-//   } catch (error) {
-//     console.error("summary error", error);
-//   }
-// };
-
-// const { data, status } = useQuery("planets", fetchSummaryInfo);
-
-// console.log(data);
-
 function Summary() {
   //state for summary
   const [summaryInfo, setSummaryInfo] = useState(null);
@@ -96,150 +80,57 @@ function Summary() {
   }, []);
 
   return (
-     (
-      <div>
-        <h1
-          className="province__title"
-          style={{
-            marginTop: "5.5rem",
-            padding: "0.75rem",
-            textAlign: "center",
-          }}
-        >
-          COVID-19 Data for Canada
-        </h1>
-        {loadingSummaryInfo ? (
-          <Dimmer active>
-            <Loader content="Loading" />
-          </Dimmer>
-        ) : (
-          <>
-            <Header data={summaryInfo?.data?.data[0]} />
-            <UpdateDate date={summaryInfo?.data?.last_updated} />
-          </>
-        )}
-        {loadingBasicData && loadingReportInfo ? (
-          <Dimmer active>
-            <Loader content="Loading" />
-          </Dimmer>
-        ) : (
-          <>
-            <div className="ui four column centered stackable grid container item__size">
-              <CovidMap
-                className="column"
-                basicData={basicData}
-                provinces={provinces}
-              />
-              <TotalChart className="column" report={reportInfo?.data?.data} />
-            </div>
-            <div className="ui four column centered stackable grid container item__size">
-              <DailyChart className="column" report={reportInfo?.data?.data} />
-              <RegionsChart className="column" basicData={basicData} />
-            </div>
+    <div>
+      <h1
+        className="province__title"
+        style={{
+          marginTop: "5.5rem",
+          padding: "0.75rem",
+          textAlign: "center",
+        }}
+      >
+        COVID-19 Data for Canada
+      </h1>
+      {summaryInfo && loadingSummaryInfo ? (
+        <Dimmer active>
+          <Loader content="Loading" />
+        </Dimmer>
+      ) : (
+        <>
+          <Header data={summaryInfo?.data?.data[0]} />
+          <UpdateDate date={summaryInfo?.data?.last_updated} />
+        </>
+      )}
+      {reportInfo && basicData && loadingBasicData && loadingReportInfo ? (
+        <Dimmer active>
+          <Loader content="Loading" />
+        </Dimmer>
+      ) : (
+        <>
+          <div className="ui four column centered stackable grid container item__size">
+            <CovidMap
+              className="column"
+              basicData={basicData}
+              provinces={provinces}
+            />
+            <TotalChart className="column" report={reportInfo?.data?.data} />
+          </div>
+          <div className="ui four column centered stackable grid container item__size">
+            <DailyChart className="column" report={reportInfo?.data?.data} />
+            <RegionsChart className="column" basicData={basicData} />
+          </div>
 
-            <div className="ui four column centered stackable grid container item__size">
-              <Table
-                basicData={basicData}
-                provinces={provinces}
-                className="column"
-              />
-            </div>
-          </>
-        )}
-      </div>
-    )
+          <div className="ui four column centered stackable grid container item__size">
+            <Table
+              basicData={basicData}
+              provinces={provinces}
+              className="column"
+            />
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
 export default Summary;
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     //api call to get the main data
-//     const response = await instance
-//       .get("/summary")
-//       .catch((err) => console.log(`summary error: ${err}`));
-
-//     //api call to get the data for all the line graphs
-//     const res = await instance
-//       .get(`/reports`)
-//       .catch((err) => console.log(`reports error: ${err}`));
-
-//     //api call to get the data for the regions graph, map data and table
-//     //provinceURL goes over all the province array and give a promise containing urls for each province
-//     const provinceURL = provinces.map((p) =>
-//       instance.get(`/reports/province/${p.Code}`)
-//     );
-
-//     //resp resolves the promise and gives the array data for each province
-//     const resp = await Promise.all(provinceURL).catch((err) =>
-//       console.log(`province data error: ${err}`)
-//     );
-
-//     console.log(resp);
-
-//     setBasicData(resp);
-//     //setReport(res?.data?.data);
-//     //setData(response.data.data[0]);
-//     //setDate(response.data.last_updated);
-
-//     return { response, res, resp };
-//   };
-
-//   fetchData();
-
-//   return () => {
-//     fetchData();
-//   };
-// }, []);
-
-// <div>
-// <h1
-//   className="province__title"
-//   style={{
-//     marginTop: "5.5rem",
-//     padding: "0.75rem",
-//     textAlign: "center",
-//   }}
-// >
-//   COVID-19 Data for Canada
-// </h1>
-// {loadingSummaryInfo ? (
-//   <Dimmer active>
-//     <Loader content="Loading" />
-//   </Dimmer>
-// ) : (
-//   <>
-//     <Header data={summaryInfo?.data?.data[0]} />
-//     <UpdateDate date={summaryInfo?.data?.last_updated} />
-//   </>
-// )}
-// {loadingBasicData && loadingReportInfo ? (
-//   <Dimmer active>
-//     <Loader content="Loading" />
-//   </Dimmer>
-// ) : (
-//   <>
-// <div className="ui four column centered stackable grid container item__size">
-// <CovidMap
-//   className="column"
-//   basicData={basicData}
-//   provinces={provinces}
-// />
-// <TotalChart className="column" report={reportInfo?.data?.data} />
-// </div>
-//     <div className="ui four column centered stackable grid container item__size">
-//       <DailyChart className="column" report={reportInfo?.data?.data} />
-//       <RegionsChart className="column" basicData={basicData} />
-//     </div>
-
-//     <div className="ui four column centered stackable grid container item__size">
-//       <Table
-//         basicData={basicData}
-//         provinces={provinces}
-//         className="column"
-//       />
-//     </div>
-//   </>
-// )}
-// </div>

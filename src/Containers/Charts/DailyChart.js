@@ -2,21 +2,21 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 function DailyCases({ report, selectedProvince }) {
-  const date = report.map((d) => d.date);
-  const total = report.map((t) =>
-    t.change_cases === null ? 0 : t.change_cases
+  const date = report?.map((d) => d.date);
+  const total = report?.map((t) =>
+    t?.change_cases === null ? 0 : t?.change_cases
   );
-  const recoveries = report.map((t) =>
-    t.change_recoveries === null ? 0 : t.change_recoveries
+  const recoveries = report?.map((t) =>
+    t?.change_recoveries === null ? 0 : t?.change_recoveries
   );
-  const fatalities = report.map((t) =>
-    t.change_fatalities === null ? 0 : t.change_fatalities
+  const fatalities = report?.map((t) =>
+    t?.change_fatalities === null ? 0 : t?.change_fatalities
   );
-  const hospitalizations = report.map((t) =>
-    t.change_hospitalizations === null ? 0 : t.change_hospitalizations
+  const hospitalizations = report?.map((t) =>
+    t?.change_hospitalizations === null ? 0 : t?.change_hospitalizations
   );
-  const vaccinated = report.map((t) =>
-    t.change_vaccinations === null ? 0 : t.change_vaccinations
+  const vaccinated = report?.map((t) =>
+    t?.change_vaccinations === null ? 0 : t?.change_vaccinations
   );
 
   return report === [] ||

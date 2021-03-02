@@ -2,13 +2,13 @@ import React from "react";
 
 function Table({ basicData, provinces }) {
   //get the data array from the main object
-  const lData = basicData.map((e) => e.data.data);
+  const lData = basicData?.map((e) => e?.data?.data);
 
   //get the latest cases from the last array
-  let lastData = lData.map((e) => e[e.length - 1]);
+  let lastData = lData?.map((e) => e[e?.length - 1]);
 
   //looped over all the object of lastData array and added name of each province.
-  for (let i = 0; i < lastData.length; i++) {
+  for (let i = 0; i < lastData?.length; i++) {
     lastData[i].name = provinces[i].Name;
   }
 
