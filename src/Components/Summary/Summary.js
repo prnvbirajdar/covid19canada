@@ -8,21 +8,43 @@ import Table from "../../Containers/Table/Table";
 import Header from "../Header/Header";
 import UpdateDate from "../UpdateDate/UpdateDate";
 
+import { Dimmer, Loader } from "semantic-ui-react";
+
+// import { useQuery } from "react-query";
+
+// //api call to get the summary data
+// const fetchSummaryInfo = async () => {
+//   try {
+//     const response = await instance.get("/summary");
+//     return response
+//   } catch (error) {
+//     console.error("summary error", error);
+//   }
+// };
+
+// const { data, status } = useQuery("planets", fetchSummaryInfo);
+
+// console.log(data);
+
 function Summary() {
   //state for summary
   const [summaryInfo, setSummaryInfo] = useState(null);
+  const [loadingSummaryInfo, setLoadingSummaryInfo] = useState(true);
 
   //state for provincial reports
   const [reportInfo, setReportInfo] = useState(null);
+  const [loadingReportInfo, setLoadingReportInfo] = useState(true);
 
   //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
+  const [loadingBasicData, setLoadingBasicData] = useState(true);
 
   //api call to get the summary data
   const fetchMain = async () => {
     try {
       const response = await instance.get("/summary");
       setSummaryInfo(response);
+      setLoadingSummaryInfo(false);
     } catch (error) {
       console.error("summary error", error);
     }
@@ -40,6 +62,7 @@ function Summary() {
     try {
       const response = await instance.get("/reports");
       setReportInfo(response);
+      setLoadingReportInfo(false);
     } catch (error) {
       console.error("report error", error);
     }
@@ -59,10 +82,10 @@ function Summary() {
       const provinceURL = provinces.map((p) =>
         instance.get(`/reports/province/${p.Code}`)
       );
-
       //resp resolves the promise and gives the array data for each province
       const resp = await Promise.all(provinceURL);
       setBasicData(resp);
+      setLoadingBasicData(false);
     } catch (error) {
       console.log(`province data error: ${error}`);
     }
@@ -73,9 +96,7 @@ function Summary() {
   }, []);
 
   return (
-    summaryInfo &&
-    reportInfo &&
-    basicData && (
+     (
       <div>
         <h1
           className="province__title"
@@ -87,27 +108,44 @@ function Summary() {
         >
           COVID-19 Data for Canada
         </h1>
-        <Header data={summaryInfo?.data?.data[0]} />
-        <UpdateDate date={summaryInfo?.data?.last_updated} />
-        <div className="ui four column centered stackable grid container item__size">
-          <CovidMap
-            className="column"
-            basicData={basicData}
-            provinces={provinces}
-          />
-          <TotalChart className="column" report={reportInfo?.data?.data} />
-        </div>
-        <div className="ui four column centered stackable grid container item__size">
-          <DailyChart className="column" report={reportInfo?.data?.data} />
-          <RegionsChart className="column" basicData={basicData} />
-        </div>
-        <div className="ui four column centered stackable grid container item__size">
-          <Table
-            basicData={basicData}
-            provinces={provinces}
-            className="column"
-          />
-        </div>
+        {loadingSummaryInfo ? (
+          <Dimmer active>
+            <Loader content="Loading" />
+          </Dimmer>
+        ) : (
+          <>
+            <Header data={summaryInfo?.data?.data[0]} />
+            <UpdateDate date={summaryInfo?.data?.last_updated} />
+          </>
+        )}
+        {loadingBasicData && loadingReportInfo ? (
+          <Dimmer active>
+            <Loader content="Loading" />
+          </Dimmer>
+        ) : (
+          <>
+            <div className="ui four column centered stackable grid container item__size">
+              <CovidMap
+                className="column"
+                basicData={basicData}
+                provinces={provinces}
+              />
+              <TotalChart className="column" report={reportInfo?.data?.data} />
+            </div>
+            <div className="ui four column centered stackable grid container item__size">
+              <DailyChart className="column" report={reportInfo?.data?.data} />
+              <RegionsChart className="column" basicData={basicData} />
+            </div>
+
+            <div className="ui four column centered stackable grid container item__size">
+              <Table
+                basicData={basicData}
+                provinces={provinces}
+                className="column"
+              />
+            </div>
+          </>
+        )}
       </div>
     )
   );
@@ -154,3 +192,54 @@ export default Summary;
 //     fetchData();
 //   };
 // }, []);
+
+// <div>
+// <h1
+//   className="province__title"
+//   style={{
+//     marginTop: "5.5rem",
+//     padding: "0.75rem",
+//     textAlign: "center",
+//   }}
+// >
+//   COVID-19 Data for Canada
+// </h1>
+// {loadingSummaryInfo ? (
+//   <Dimmer active>
+//     <Loader content="Loading" />
+//   </Dimmer>
+// ) : (
+//   <>
+//     <Header data={summaryInfo?.data?.data[0]} />
+//     <UpdateDate date={summaryInfo?.data?.last_updated} />
+//   </>
+// )}
+// {loadingBasicData && loadingReportInfo ? (
+//   <Dimmer active>
+//     <Loader content="Loading" />
+//   </Dimmer>
+// ) : (
+//   <>
+// <div className="ui four column centered stackable grid container item__size">
+// <CovidMap
+//   className="column"
+//   basicData={basicData}
+//   provinces={provinces}
+// />
+// <TotalChart className="column" report={reportInfo?.data?.data} />
+// </div>
+//     <div className="ui four column centered stackable grid container item__size">
+//       <DailyChart className="column" report={reportInfo?.data?.data} />
+//       <RegionsChart className="column" basicData={basicData} />
+//     </div>
+
+//     <div className="ui four column centered stackable grid container item__size">
+//       <Table
+//         basicData={basicData}
+//         provinces={provinces}
+//         className="column"
+//       />
+//     </div>
+//   </>
+// )}
+// </div>
