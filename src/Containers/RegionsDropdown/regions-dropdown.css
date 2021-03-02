@@ -1,0 +1,15 @@
+.ui.selection.dropdown {
+  min-width: 25%;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.selection.dropdown {
+    min-width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.selection.dropdown .menu {
+    max-height: 15rem !important;
+  }
+}

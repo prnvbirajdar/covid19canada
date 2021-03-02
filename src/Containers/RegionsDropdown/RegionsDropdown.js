@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./regions-dropdown.css";
 
 function RegionsDropdown({ provinces, match }) {
   const [regions, setRegions] = useState([]);
