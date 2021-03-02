@@ -13,22 +13,22 @@ import { Dimmer, Loader } from "semantic-ui-react";
 function Summary() {
   //state for summary
   const [summaryInfo, setSummaryInfo] = useState(null);
-  const [loadingSummaryInfo, setLoadingSummaryInfo] = useState(true);
+  //const [loadingSummaryInfo, setLoadingSummaryInfo] = useState(true);
 
   //state for provincial reports
   const [reportInfo, setReportInfo] = useState(null);
-  const [loadingReportInfo, setLoadingReportInfo] = useState(true);
+ // const [loadingReportInfo, setLoadingReportInfo] = useState(true);
 
   //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
-  const [loadingBasicData, setLoadingBasicData] = useState(true);
+ // const [loadingBasicData, setLoadingBasicData] = useState(true);
 
   //api call to get the summary data
   const fetchMain = async () => {
     try {
       const response = await instance.get("/summary");
       setSummaryInfo(response);
-      setLoadingSummaryInfo(false);
+     // setLoadingSummaryInfo(false);
     } catch (error) {
       console.error("summary error", error);
     }
@@ -46,7 +46,7 @@ function Summary() {
     try {
       const response = await instance.get("/reports");
       setReportInfo(response);
-      setLoadingReportInfo(false);
+     // setLoadingReportInfo(false);
     } catch (error) {
       console.error("report error", error);
     }
@@ -69,7 +69,7 @@ function Summary() {
       //resp resolves the promise and gives the array data for each province
       const resp = await Promise.all(provinceURL);
       setBasicData(resp);
-      setLoadingBasicData(false);
+     // setLoadingBasicData(false);
     } catch (error) {
       console.log(`province data error: ${error}`);
     }

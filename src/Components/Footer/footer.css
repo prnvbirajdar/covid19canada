@@ -13,7 +13,7 @@
 .social-link:visited {
   color: rgba(20, 20, 20, 0.753);
   margin: 0 0.6em;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .social-link:hover,
@@ -31,7 +31,7 @@
 .copyright {
   font-family: inherit;
   opacity: 0.6;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   text-decoration: none;
   color: #141414;
 }

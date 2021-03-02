@@ -37,9 +37,9 @@ function Footer() {
         </li>
       </ul>
       <div className="copyright__div">
-        <p className="copyright__p">
+        <p className="copyright__p" style={{ paddingBottom: "0.75rem" }}>
           <a className="copyright" href="#top">
-            ©2020 Pranav Birajdar
+            ©2021 Pranav Birajdar
           </a>
         </p>
       </div>
