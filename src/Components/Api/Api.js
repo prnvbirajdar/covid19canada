@@ -643,5 +643,3 @@ const mapboxKey =
   "pk.eyJ1IjoiY2c3MDkiLCJhIjoiY2tpNW05YThmMWozbjJ0bno0MGV6MW9reCJ9.7_QzeN9el8dzcDrUg-FURw";
 
 export { instance, mapboxKey, provinces };
-
-// PROVINCE CODES

@@ -10,25 +10,50 @@ import UpdateDate from "../UpdateDate/UpdateDate";
 
 function Summary() {
   //state for summary
-  const [data, setData] = useState({});
-  const [date, setDate] = useState("");
+  const [summaryInfo, setSummaryInfo] = useState(null);
+
   //state for provincial reports
-  const [report, setReport] = useState([]);
+  const [reportInfo, setReportInfo] = useState(null);
+
   //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
 
+  //api call to get the summary data
+  const fetchMain = async () => {
+    try {
+      const response = await instance.get("/summary");
+      setSummaryInfo(response);
+    } catch (error) {
+      console.error("summary error", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      //api call to get the main data
-      const response = await instance
-        .get("/summary")
-        .catch((err) => console.log(`summary error: ${err}`));
+    fetchMain();
+    return () => {
+      fetchMain();
+    };
+  }, []);
 
-      //api call to get the data for all the line graphs
-      const res = await instance
-        .get(`/reports`)
-        .catch((err) => console.log(`reports error: ${err}`));
+  //api call to get the report data all the line graphs
+  const fetchReport = async () => {
+    try {
+      const response = await instance.get("/reports");
+      setReportInfo(response);
+    } catch (error) {
+      console.error("report error", error);
+    }
+  };
 
+  useEffect(() => {
+    fetchReport();
+    return () => {
+      fetchReport();
+    };
+  }, []);
+
+  const fetchProvcincialData = async () => {
+    try {
       //api call to get the data for the regions graph, map data and table
       //provinceURL goes over all the province array and give a promise containing urls for each province
       const provinceURL = provinces.map((p) =>
@@ -36,25 +61,20 @@ function Summary() {
       );
 
       //resp resolves the promise and gives the array data for each province
-      const resp = await Promise.all(provinceURL).catch((err) =>
-        console.log(`province data error: ${err}`)
-      );
-
+      const resp = await Promise.all(provinceURL);
       setBasicData(resp);
-      setReport(res.data.data);
-      setData(response.data.data[0]);
-      setDate(response.data.last_updated);
+    } catch (error) {
+      console.log(`province data error: ${error}`);
+    }
+  };
 
-      return { response, res, resp };
-    };
-
-    fetchData();
+  useEffect(() => {
+    fetchProvcincialData();
   }, []);
 
   return (
-    data &&
-    report &&
-    date &&
+    summaryInfo &&
+    reportInfo &&
     basicData && (
       <div>
         <h1
@@ -67,18 +87,18 @@ function Summary() {
         >
           COVID-19 Data for Canada
         </h1>
-        <Header data={data} />
-        <UpdateDate date={date} />
+        <Header data={summaryInfo?.data?.data[0]} />
+        <UpdateDate date={summaryInfo?.data?.last_updated} />
         <div className="ui four column centered stackable grid container item__size">
           <CovidMap
             className="column"
             basicData={basicData}
             provinces={provinces}
           />
-          <TotalChart className="column" report={report} />
+          <TotalChart className="column" report={reportInfo?.data?.data} />
         </div>
         <div className="ui four column centered stackable grid container item__size">
-          <DailyChart className="column" report={report} />
+          <DailyChart className="column" report={reportInfo?.data?.data} />
           <RegionsChart className="column" basicData={basicData} />
         </div>
         <div className="ui four column centered stackable grid container item__size">
@@ -94,3 +114,43 @@ function Summary() {
 }
 
 export default Summary;
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     //api call to get the main data
+//     const response = await instance
+//       .get("/summary")
+//       .catch((err) => console.log(`summary error: ${err}`));
+
+//     //api call to get the data for all the line graphs
+//     const res = await instance
+//       .get(`/reports`)
+//       .catch((err) => console.log(`reports error: ${err}`));
+
+//     //api call to get the data for the regions graph, map data and table
+//     //provinceURL goes over all the province array and give a promise containing urls for each province
+//     const provinceURL = provinces.map((p) =>
+//       instance.get(`/reports/province/${p.Code}`)
+//     );
+
+//     //resp resolves the promise and gives the array data for each province
+//     const resp = await Promise.all(provinceURL).catch((err) =>
+//       console.log(`province data error: ${err}`)
+//     );
+
+//     console.log(resp);
+
+//     setBasicData(resp);
+//     //setReport(res?.data?.data);
+//     //setData(response.data.data[0]);
+//     //setDate(response.data.last_updated);
+
+//     return { response, res, resp };
+//   };
+
+//   fetchData();
+
+//   return () => {
+//     fetchData();
+//   };
+// }, []);
