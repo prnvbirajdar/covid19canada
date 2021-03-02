@@ -84,6 +84,7 @@ function Summary() {
       <h1
         className="province__title"
         style={{
+          fontSize: "3rem",
           marginTop: "5.5rem",
           padding: "0.75rem",
           textAlign: "center",
@@ -107,7 +108,10 @@ function Summary() {
         </Dimmer>
       ) : (
         <>
-          <div className="ui four column centered stackable grid container item__size">
+          <div
+            className="ui four column centered stackable grid container item__size"
+           
+          >
             <CovidMap
               className="column"
               basicData={basicData}

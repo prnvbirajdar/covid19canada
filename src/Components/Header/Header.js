@@ -16,6 +16,9 @@ function Header({ data }) {
     <main
       className="ui doubling six column centered grid stackable container"
       id="grid"
+      style={{
+        marginTop: "2rem",
+      }}
     >
       <div
         className="ui column small statistic header__div header__div--cases"

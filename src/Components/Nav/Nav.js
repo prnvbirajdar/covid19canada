@@ -16,7 +16,7 @@ function Nav({ provinces }) {
       </Menu.Item>
 
       <Dropdown
-        placeholder="Select Province"
+        text="Select Province"
         className="link item dropdown"
         style={{
           paddingRight: "5rem",
@@ -30,16 +30,18 @@ function Nav({ provinces }) {
         <Dropdown.Menu>
           {provinces.map((province) => {
             return (
-              <Dropdown.Item key={province.Code} value={province.Name}>
-                <Link
-                  to={`/province/${province.Code}`}
-                  onClick={window.scrollTo(0, 0)}
-                >
+              <Link
+                key={province.Code}
+                value={province.Name}
+                to={`/province/${province.Code}`}
+                onClick={window.scrollTo(0, 0)}
+              >
+                <Dropdown.Item>
                   <p style={{ color: "black" }}>
                     <b>{province.Name}</b>
                   </p>
-                </Link>
-              </Dropdown.Item>
+                </Dropdown.Item>
+              </Link>
             );
           })}
         </Dropdown.Menu>
