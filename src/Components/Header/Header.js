@@ -14,10 +14,10 @@ function Header({ data }) {
 
   return data === undefined ? null : (
     <main
-      className="ui doubling six column centered grid stackable container"
+      className="ui doubling five column centered grid stackable container"
       id="grid"
       style={{
-        marginTop: "2rem",
+        marginTop: "1rem",
       }}
     >
       <div
@@ -44,7 +44,7 @@ function Header({ data }) {
         <div className="value" style={deathsColor}>
           <p>
             <b>{formatCases(data.total_fatalities)}</b>
-          </p>{" "}
+          </p>
         </div>
         <p className="today--style" style={deathsColor}>
           {formatCases(data.change_fatalities)} today

@@ -84,15 +84,16 @@ function Summary() {
       <h1
         className="province__title"
         style={{
-          fontSize: "3rem",
+          fontSize: "2.5rem",
           marginTop: "5.5rem",
-          padding: "0.75rem",
+          padding: "0.75rem 0 0",
           textAlign: "center",
         }}
       >
         COVID-19 Data for Canada
       </h1>
-      {summaryInfo && loadingSummaryInfo ? (
+
+      {!summaryInfo ? (
         <Dimmer active>
           <Loader content="Loading" />
         </Dimmer>
@@ -102,28 +103,25 @@ function Summary() {
           <UpdateDate date={summaryInfo?.data?.last_updated} />
         </>
       )}
-      {reportInfo && basicData && loadingBasicData && loadingReportInfo ? (
+      {!reportInfo && !basicData ? (
         <Dimmer active>
           <Loader content="Loading" />
         </Dimmer>
       ) : (
         <>
-          <div
-            className="ui four column centered stackable grid container item__size"
-           
-          >
+          <div className="ui four column centered stackable grid container item__size">
+            <TotalChart className="column" report={reportInfo?.data?.data} />
+
+            <DailyChart className="column" report={reportInfo?.data?.data} />
+          </div>
+          <div className="ui four column centered stackable grid container item__size">
+            <RegionsChart className="column" basicData={basicData} />
             <CovidMap
               className="column"
               basicData={basicData}
               provinces={provinces}
             />
-            <TotalChart className="column" report={reportInfo?.data?.data} />
           </div>
-          <div className="ui four column centered stackable grid container item__size">
-            <DailyChart className="column" report={reportInfo?.data?.data} />
-            <RegionsChart className="column" basicData={basicData} />
-          </div>
-
           <div className="ui four column centered stackable grid container item__size">
             <Table
               basicData={basicData}

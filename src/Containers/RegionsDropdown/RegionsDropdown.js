@@ -32,7 +32,7 @@ function RegionsDropdown({ provinces, match }) {
           style={{
             marginLeft: "2em",
             marginTop: "1em",
-            backgroundColor: "rgb(150, 150, 150)",
+            backgroundColor: " rgba(243, 244, 246)",
             color: "black",
             fontWeight: "700",
             fontSize: "1.05rem",

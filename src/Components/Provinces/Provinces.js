@@ -32,7 +32,10 @@ function Provinces({ match }) {
     <div>
       <h1
         className="province__title"
-        style={{ marginTop: "5.5rem", padding: "0.75rem" }}
+        style={{
+          marginTop: "5.5rem",
+          padding: "0.75rem 0 0 ",
+        }}
       >
         COVID-19 Data for {selectedProvince}
       </h1>

@@ -17,6 +17,14 @@
 .ui.card,
 .ui.cards > .card {
   margin-top: 2.5rem !important;
+  width: 84% !important;
+}
 
-  width: 95% !important;
+
+@media only screen and (max-width: 767px) {
+  .ui.card,
+  .ui.cards > .card {
+    margin-top: 2.5rem !important;
+    width: 95% !important;
+  }
 }
