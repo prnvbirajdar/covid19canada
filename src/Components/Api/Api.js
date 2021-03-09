@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios Create Instance
 const instance = axios.create({
-  baseURL: "https://api.covid19tracker.ca",
+  baseURL: "https://covid-cors.herokuapp.com/https://api.covid19tracker.ca",
 });
 
 // List of Country and Provinces
