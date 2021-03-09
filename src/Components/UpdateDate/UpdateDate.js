@@ -34,13 +34,13 @@ function UpdateDate({ date }) {
   const dateStr = `${month} ${day}, ${year}`;
   return (
     <div style={{ padding: "2rem 1rem 0", textAlign: "center" }}>
-      <h4>
+      <p style={{ fontSize: "1.1rem" }}>
         <b>
           Last Updated:
           {` ${dateStr} at ${timeString}  
           `}
         </b>
-      </h4>
+      </p>
     </div>
   );
 }

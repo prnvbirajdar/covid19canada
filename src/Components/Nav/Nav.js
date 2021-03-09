@@ -7,7 +7,7 @@ function Nav({ provinces }) {
   return (
     <Menu className="nav">
       <Menu.Item>
-        <Link to="/">
+        <Link aria-label="logo" to="/">
           <i
             className="fas fa-shield-virus"
             style={{ fontSize: "3rem", color: "white" }}
@@ -17,6 +17,7 @@ function Nav({ provinces }) {
 
       <Dropdown
         text="Select Province"
+        aria-label="dropdown"
         className="link item dropdown"
         style={{
           paddingRight: "5rem",
@@ -27,17 +28,26 @@ function Nav({ provinces }) {
           borderRadius: "5px",
         }}
       >
-        <Dropdown.Menu>
+        <Dropdown.Menu aria-label="province dropdown menu" aria-expanded="true">
           {provinces.map((province) => {
             return (
               <Link
+                aria-expanded="true"
+                aria-label="province button"
                 key={province.Code}
                 value={province.Name}
                 to={`/province/${province.Code}`}
                 onClick={window.scrollTo(0, 0)}
               >
-                <Dropdown.Item>
-                  <p style={{ color: "black" }}>
+                <Dropdown.Item
+                  aria-label="province dropdown item"
+                  aria-expanded="true"
+                >
+                  <p
+                    style={{ color: "black" }}
+                    aria-label="province name"
+                    aria-expanded="true"
+                  >
                     <b>{province.Name}</b>
                   </p>
                 </Dropdown.Item>

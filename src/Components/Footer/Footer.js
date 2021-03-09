@@ -7,6 +7,7 @@ function Footer() {
       <ul className="social">
         <li className="social-list">
           <a
+            aria-label="gmail icon"
             target="_blank"
             rel="noreferrer"
             href="mailto: prnvbirajdar@gmail.com"
@@ -17,6 +18,7 @@ function Footer() {
         </li>
         <li className="social-list">
           <a
+            aria-label="github icon"
             target="_blank"
             rel="noreferrer"
             href="https://github.com/prnvbirajdar"
@@ -27,6 +29,7 @@ function Footer() {
         </li>
         <li className="social-list">
           <a
+            aria-label="linkedin icon"
             target="_blank"
             rel="noreferrer"
             href="https://www.linkedin.com/in/prnvbirajdar/"
@@ -38,7 +41,7 @@ function Footer() {
       </ul>
       <div className="copyright__div">
         <p className="copyright__p" style={{ paddingBottom: "0.75rem" }}>
-          <a className="copyright" href="#top">
+          <a className="copyright" href="#top" aria-label="copyright">
             ©2021 Pranav Birajdar
           </a>
         </p>
