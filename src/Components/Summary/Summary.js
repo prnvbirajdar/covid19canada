@@ -17,18 +17,18 @@ function Summary() {
 
   //state for provincial reports
   const [reportInfo, setReportInfo] = useState(null);
- // const [loadingReportInfo, setLoadingReportInfo] = useState(true);
+  // const [loadingReportInfo, setLoadingReportInfo] = useState(true);
 
   //state for tables, graphs and maps
   const [basicData, setBasicData] = useState([]);
- // const [loadingBasicData, setLoadingBasicData] = useState(true);
+  // const [loadingBasicData, setLoadingBasicData] = useState(true);
 
   //api call to get the summary data
   const fetchMain = async () => {
     try {
       const response = await instance.get("/summary");
       setSummaryInfo(response);
-     // setLoadingSummaryInfo(false);
+      // setLoadingSummaryInfo(false);
     } catch (error) {
       console.error("summary error", error);
     }
@@ -46,7 +46,7 @@ function Summary() {
     try {
       const response = await instance.get("/reports");
       setReportInfo(response);
-     // setLoadingReportInfo(false);
+      // setLoadingReportInfo(false);
     } catch (error) {
       console.error("report error", error);
     }
@@ -69,7 +69,7 @@ function Summary() {
       //resp resolves the promise and gives the array data for each province
       const resp = await Promise.all(provinceURL);
       setBasicData(resp);
-     // setLoadingBasicData(false);
+      // setLoadingBasicData(false);
     } catch (error) {
       console.log(`province data error: ${error}`);
     }
@@ -77,8 +77,11 @@ function Summary() {
 
   useEffect(() => {
     fetchProvcincialData();
-  }, []);
 
+    return () => {
+      fetchProvcincialData();
+    };
+  }, []);
   return (
     <div>
       <h1
@@ -103,17 +106,25 @@ function Summary() {
           <UpdateDate date={summaryInfo?.data?.last_updated} />
         </>
       )}
-      {!reportInfo && !basicData ? (
+
+      {!reportInfo ? (
         <Dimmer active>
           <Loader content="Loading" />
         </Dimmer>
       ) : (
-        <>
-          <div className="ui four column centered stackable grid container item__size">
-            <TotalChart className="column" report={reportInfo?.data?.data} />
+        <div className="ui four column centered stackable grid container item__size">
+          <TotalChart className="column" report={reportInfo?.data?.data} />
 
-            <DailyChart className="column" report={reportInfo?.data?.data} />
-          </div>
+          <DailyChart className="column" report={reportInfo?.data?.data} />
+        </div>
+      )}
+
+      {!basicData ? (
+        <Dimmer active>
+          <Loader content="Loading" />
+        </Dimmer>
+      ) : (
+        <React.Fragment>
           <div className="ui four column centered stackable grid container item__size">
             <RegionsChart className="column" basicData={basicData} />
             <CovidMap
@@ -129,7 +140,7 @@ function Summary() {
               className="column"
             />
           </div>
-        </>
+        </React.Fragment>
       )}
     </div>
   );
