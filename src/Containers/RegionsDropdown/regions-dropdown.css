@@ -2,14 +2,20 @@
   min-width: 25%;
 }
 
-@media only screen and (max-width: 767px) {
-  .ui.selection.dropdown {
-    min-width: 95% !important;
-    margin:1rem !important;
-  }
+.regions__dropdown {
+  margin-left: 1rem;
 }
 
 @media only screen and (max-width: 767px) {
+  .ui.selection.dropdown {
+    min-width: 95% !important;
+     margin-top: 1.5rem !important; 
+  }
+
+  .regions__dropdown {
+    margin-left: 0;
+  }
+
   .ui.selection.dropdown .menu {
     max-height: 15rem !important;
   }
