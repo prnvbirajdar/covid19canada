@@ -62,7 +62,7 @@ function CovidMap({ basicData, provinces }) {
                   </span>{" "}
                   <br />
                   <span>
-                    <b>Vaccinated: {formatCases(p.total_vaccinations)}</b>
+                    <b>Vaccinations: {formatCases(p.total_vaccinations)}</b>
                   </span>{" "}
                   <br />
                   <span>Total Cases: {formatCases(p.total_cases)}</span> <br />
