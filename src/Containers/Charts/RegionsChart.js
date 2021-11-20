@@ -185,7 +185,7 @@ function DoughChart({ basicData }) {
                   hidden: true,
                 },
                 {
-                  label: "Vaccinated",
+                  label: "Vaccinations",
                   data: [
                     centralVaccinated,
                     prairieVaccinated,
