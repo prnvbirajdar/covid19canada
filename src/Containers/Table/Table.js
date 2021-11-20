@@ -31,7 +31,7 @@ function Table({ basicData, provinces }) {
               <th>Cases</th>
               <th>Deaths</th>
               <th>Active</th>
-              <th>Vaccinated</th>
+              <th>Vaccinations</th>
               <th>Recoveries</th>
               <th>Hospitalizations</th>
               <th>Tests</th>
@@ -77,7 +77,7 @@ function Table({ basicData, provinces }) {
                         )}{" "}
                     today)
                   </td>
-                  <td className="collapsing" data-label="Vaccinated">
+                  <td className="collapsing" data-label="Vaccinations">
                     <b>
                       {" "}
                       {formatCases(data.total_vaccinations)} <br /> (
