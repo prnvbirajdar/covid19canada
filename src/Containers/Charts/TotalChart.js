@@ -47,7 +47,7 @@ function TotalCases({ report, selectedProvince }) {
                 pointRadius: 0,
               },
               {
-                label: "Vaccinated",
+                label: "Vaccinations",
                 data: vaccinated,
                 backgroundColor: "rgba(20,20,20,0.354)",
                 borderWidth: 2,
