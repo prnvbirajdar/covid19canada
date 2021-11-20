@@ -90,7 +90,7 @@ function Header({ data }) {
       ) : (
         <div className="ui column small statistic header__div header__div--vaccinations">
           <div className="label" style={vaccinatedColor}>
-            Vaccinated
+            Vaccinations
           </div>
           <div className="value" style={vaccinatedColor}>
             <p>
